@@ -1,6 +1,6 @@
 ---
 layout: app
-title: 할만한 스도쿠
+title: 할만한 세모 땅따먹기
 privacy_url: /apps/sudoku/privacy
 ---
 

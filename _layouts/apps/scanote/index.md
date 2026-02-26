@@ -1,6 +1,6 @@
 ---
 layout: app
-title: 할만한 스도쿠
+title: 쓸만한 스캔노트
 privacy_url: /apps/sudoku/privacy
 ---
 
