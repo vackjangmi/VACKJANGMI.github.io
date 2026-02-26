@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<div style="margin: 0 0 12px 0; font-size: 14px;">
+  <a href="{{ '/' | relative_url }}">앱 리스트</a>
+  {% if page.app_title and page.app_url %}
+    / <a href="{{ page.app_url | relative_url }}">{{ page.app_title }}</a>
+  {% endif %}
+</div>
+
+{{ content }}

@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div style="margin: 0 0 12px 0; font-size: 14px;">
+  ← <a href="{{ '/' | relative_url }}">앱 리스트</a>
+</div>
+
+{{ content }}
+
+<hr style="margin: 24px 0;" />
+
+<div style="display:flex; gap:12px; flex-wrap:wrap;">
+  {% if page.privacy_url %}
+    <a href="{{ page.privacy_url | relative_url }}">개인정보처리방침</a>
+  {% endif %}
+</div>
