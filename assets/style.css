@@ -155,7 +155,7 @@ a:hover{ color: var(--brand); }
 
 .app-card:hover{
   transform: translateY(-1px);
-  border-color: rgba(255,107,107,.28);      /* 코랄(우리 포인트) */
+  border-color: rgba(31,41,55,.10);
   box-shadow: 0 12px 26px rgba(15,23,42,.10);
 }
 
