@@ -1,0 +1,40 @@
+/* 홈 앱 카드 UI */
+.apps-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-top:16px;
+}
+
+.app-card{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:14px;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  text-decoration:none;
+  background:#fff;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.app-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+}
+
+.app-icon{
+  border-radius:12px;
+}
+
+.app-title{
+  font-weight:800;
+  letter-spacing:-0.2px;
+  color:#111827;
+}
+
+.app-sub{
+  font-size:13px;
+  color:#6b7280;
+  margin-top:2px;
+}
