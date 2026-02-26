@@ -1,5 +1,5 @@
 ---
-title: HOME
+title: 목록
 permalink: /
 ---
 
