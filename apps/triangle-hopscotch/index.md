@@ -6,7 +6,7 @@ privacy_url: /apps/triangle-hopscotch/privacy
 
 # 할만한 세모 땅따먹기
 
-# ⭐ App 소개
+## ⭐ App 소개
 
 - 이 게임은 개발자와 개발자의 가족이 직접 하기 위해서 만들었습니다.
     - 옛날에 수업시간(?) 에 친구와 하던 추억을 되살리며 제작했습니다.
@@ -14,17 +14,17 @@ privacy_url: /apps/triangle-hopscotch/privacy
 - 자녀의 무분별한 게임을 제한하고자, 플레이 타임의 제한이 생겼습니다.
 - 과도한 광고에 지쳐서 직접 만들게 됐습니다.
 
-# 📥 앱 다운로드
+## 📥 앱 다운로드
 
 - iOS: 준비 중
 - Android:
     - 원스토어: 준비 중
     - 갤럭시 스토어: 준비 중
 
-# 🔏 개인정보 처리 방침
+## 🔏 개인정보 처리 방침
 
 ["할만한 세모 땅따먹기" 개인정보처리방침](/apps/triangle-hopscotch/privacy)
 
-# 🧑‍💻 개발자 연락처
+## 🧑‍💻 개발자 연락처
 
 **이메일:** vackjangmi@gmail.com
