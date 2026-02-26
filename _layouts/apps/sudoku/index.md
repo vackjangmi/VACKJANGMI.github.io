@@ -1,5 +1,5 @@
 ---
-layout: ../app
+layout: app
 title: 할만한 스도쿠
 privacy_url: /apps/sudoku/privacy
 ---
