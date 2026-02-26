@@ -100,3 +100,40 @@ a:hover{ color: var(--brand); }
 .btn:hover{
   background: rgba(255,107,107,.14);
 }
+
+/* ===== Hover/Link 정리 (Cayman 오버라이드) ===== */
+
+/* 1) 일반 링크: 밑줄 대신 아주 은은한 underline */
+.main-content a{
+  text-decoration: none;
+  border-bottom: 1px solid rgba(15,118,110,.25); /* 티얼 */
+  color: #0f766e;
+}
+.main-content a:hover{
+  border-bottom-color: rgba(255,107,107,.55);   /* 코랄 포인트 */
+  color: #ff6b6b;
+}
+
+/* 2) 카드 링크(app-card): 밑줄/보더/색 변화 전부 제거 */
+.app-card,
+.app-card:hover,
+.app-card:focus,
+.app-card:active{
+  text-decoration: none !important;
+  border-bottom: none !important;
+  color: inherit !important;   /* 텍스트 색 바뀌는 거 방지 */
+}
+
+/* 카드 내부 텍스트도 링크 hover 영향 받지 않게 */
+.app-card .app-title,
+.app-card .app-sub{
+  color: inherit;
+}
+
+/* 3) 키보드 포커스(접근성): 밑줄 대신 외곽선 */
+.app-card:focus-visible{
+  outline: 3px solid rgba(255,107,107,.35);
+  outline-offset: 3px;
+}
+
+.app-card:hover{ border-color: rgba(255,107,107,.25); }

@@ -1,9 +1,7 @@
 ---
-title: 앱 리스트
+title: 할만한 쓸만한
 permalink: /
 ---
-
-# 할만한 쓸만한
 
 <div class="apps-grid">
   <a class="app-card" href="{{ '/apps/sudoku/' | relative_url }}">
