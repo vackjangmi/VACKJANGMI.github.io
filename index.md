@@ -1,5 +1,5 @@
 ---
-title: 목록
+title: APP LIST
 permalink: /
 ---
 
