@@ -1,60 +1,43 @@
-/* assets/style.css */
-/* 가족적/따뜻한 톤: 크림 배경 + 코랄/살구/하늘 포인트 */
-
 :root{
-  --bg: #fbfaf6;               /* 따뜻한 크림 */
-  --surface: #ffffff;          /* 카드 배경 */
-  --text: #1f2937;             /* 본문 텍스트 */
-  --muted: #6b7280;            /* 보조 텍스트 */
+  --bg: #fbfaf6;             /* 따뜻한 크림 */
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
   --border: rgba(31,41,55,.10);
 
-  --brand: #ff6b6b;            /* 코랄 */
-  --brand2: #ffd36e;           /* 살구/옐로 */
-  --brand3: #7dd3fc;           /* 하늘 */
-
+  --brand: #ff6b6b;          /* 포인트(코랄) 1개만 */
   --radius: 16px;
-  --shadow: 0 10px 26px rgba(15, 23, 42, .08);
-  --shadowHover: 0 16px 34px rgba(15, 23, 42, .12);
+  --shadow: 0 8px 18px rgba(15, 23, 42, .06);
+  --shadowHover: 0 12px 26px rgba(15, 23, 42, .10);
 }
 
-/* 전체 배경/폰트 느낌 */
 body{
   background: var(--bg);
   color: var(--text);
 }
 
-/* Cayman 테마 헤더를 따뜻하게 */
+/* ✅ 헤더: 무지개 그라데이션 제거 → 단색 + 아주 약한 톤 */
 .page-header{
-  /* 기존 Cayman의 진한 그라데이션을 부드럽게 교체 */
-  background: linear-gradient(135deg,
-    rgba(255,107,107,.95) 0%,
-    rgba(255,211,110,.95) 45%,
-    rgba(125,211,252,.95) 100%);
+  background: #0f766e;               /* 차분한 티얼 */
+  /* 더 따뜻하게 하고 싶으면 아래로 교체:
+     background: #ff6b6b; */
 }
 
-/* 헤더 타이포 살짝 부드럽게 */
 .project-name{
   letter-spacing: -0.4px;
 }
 .project-tagline{
-  opacity: .95;
+  opacity: .9;
 }
 
-/* 본문 폭/여백 살짝 개선 */
-.main-content{
-  max-width: 920px;
-}
+/* 본문 폭 */
+.main-content{ max-width: 920px; }
 
-/* 링크 기본 톤 */
-a{
-  color: #0f766e;              /* 차분한 티얼(유용/안정 느낌) */
-}
-a:hover{
-  color: var(--brand);
-}
+/* 링크 */
+a{ color: #0f766e; }
+a:hover{ color: var(--brand); }
 
-/* ===== 홈 앱 리스트 카드 ===== */
-
+/* ===== 홈 카드 ===== */
 .apps-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -66,36 +49,17 @@ a:hover{
   display:flex;
   gap:12px;
   align-items:center;
-  padding:14px 14px;
+  padding:14px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   text-decoration:none;
   box-shadow: var(--shadow);
-  transform: translateY(0);
   transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* 카드에 은은한 포인트 “빛” */
-.app-card::before{
-  content:"";
-  position:absolute;
-  inset:-40px -60px auto auto;
-  width:160px;
-  height:160px;
-  background: radial-gradient(circle,
-    rgba(255,107,107,.20) 0%,
-    rgba(255,211,110,.18) 45%,
-    rgba(125,211,252,.14) 80%,
-    rgba(255,255,255,0) 100%);
-  transform: rotate(8deg);
-  pointer-events:none;
 }
 
 .app-card:hover{
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   box-shadow: var(--shadowHover);
   border-color: rgba(255,107,107,.25);
 }
@@ -104,13 +68,12 @@ a:hover{
   width:46px;
   height:46px;
   border-radius: 14px;
-  /* 아이콘에 살짝 테두리/그림자 */
+  background:#fff;
   box-shadow: 0 6px 14px rgba(0,0,0,.08);
-  background: #fff;
 }
 
 .app-title{
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: -0.2px;
   color: var(--text);
 }
@@ -121,47 +84,19 @@ a:hover{
   margin-top: 2px;
 }
 
-/* ===== 버튼 느낌(앱 상세 페이지에서 쓰기 좋음) ===== */
-
+/* 버튼(필요시) */
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
   padding:10px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(255,107,107,.25);
-  background: linear-gradient(135deg,
-    rgba(255,107,107,.12) 0%,
-    rgba(255,211,110,.14) 50%,
-    rgba(125,211,252,.10) 100%);
+  border: 1px solid rgba(255,107,107,.35);
+  background: rgba(255,107,107,.10);
   color: var(--text);
   text-decoration:none;
   font-weight: 700;
-  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
 }
-
 .btn:hover{
-  transform: translateY(-1px);
-  border-color: rgba(255,107,107,.40);
-  box-shadow: 0 12px 26px rgba(15, 23, 42, .10);
-}
-
-/* ===== breadcrumb(상단 부모 링크) ===== */
-
-.breadcrumb{
-  font-size: 14px;
-  color: var(--muted);
-  margin: 4px 0 14px;
-}
-
-.breadcrumb a{
-  color: var(--text);
-  text-decoration:none;
-  border-bottom: 1px dashed rgba(31,41,55,.25);
-}
-
-.breadcrumb a:hover{
-  color: var(--brand);
-  border-bottom-color: var(--brand);
+  background: rgba(255,107,107,.14);
 }
