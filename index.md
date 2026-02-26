@@ -1,5 +1,4 @@
 ---
-title: 할만한 쓸만한
 permalink: /
 ---
 
