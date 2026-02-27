@@ -27,4 +27,4 @@ privacy_url: /apps/triangle-hopscotch/privacy
 
 ## 🧑‍💻 개발자 연락처
 
-**이메일:** vackjangmi@gmail.com
+**이메일:** sooyeol86@gmail.com
