@@ -70,7 +70,7 @@ iOS 기기에서는 앱 추적 투명성(App Tracking Transparency)에 따라 �
 
 ### 7. 문의
 
-이메일: vackjangmi@gmail.com
+이메일: sooyeol86@gmail.com
 
 ---
 
@@ -144,4 +144,4 @@ Since the Service does not directly manage personal data, requests for access, c
 
 ### 7. Contact
 
-Email: vackjangmi@gmail.com
+Email: sooyeol86@gmail.com
