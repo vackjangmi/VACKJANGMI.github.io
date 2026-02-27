@@ -18,8 +18,8 @@ privacy_url: /apps/sudoku/privacy
 
 - iOS: [App Store에서 다운로드](https://apps.apple.com/kr/app/%ED%95%A0%EB%A7%8C%ED%95%9C-%EC%8A%A4%EB%8F%84%EC%BF%A0/id6759184547)
 - Android:
-    - 원스토어: 준비 중
-    - 갤럭시 스토어: 준비 중
+    - 원스토어: https://m.onestore.co.kr/v2/ko-kr/app/0001004533
+    - 직접 다운로드: https://drive.google.com/file/d/1tFb_yGPRknL73VPUStXGJklqElfdKp_W/view?usp=drive_link
 
 
 # 🔏 개인 정보 처리 방침
