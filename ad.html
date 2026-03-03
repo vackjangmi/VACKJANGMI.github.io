@@ -6,7 +6,7 @@ layout: none
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>추천 앱</title>
+  <title>개발자의 다른 앱</title>
   <style>
     html, body {
       margin: 0; padding: 0;
@@ -31,18 +31,29 @@ layout: none
       box-sizing: border-box;
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px; /* 내부 여백만 */
       text-decoration: none;
       color: #111;
       background: #ffffff;
       transition: opacity 220ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: center; /* 카드 안 컨텐츠도 가운데 */
+      padding: 0; /* 바깥 여백 느낌 없애기 */
     }
 
     .card.fade-out { opacity: 0; }
     .card.fade-in  { opacity: 1; }
+
+    /* 가운데 정렬된 내용 묶음 */
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 12px; /* 내부 여백만 */
+      max-width: 100%;
+      box-sizing: border-box;
+    }
 
     .badge {
       font-size: 11px;
@@ -52,6 +63,7 @@ layout: none
       background: #f2f2f2;
       color: #555;
       flex: 0 0 auto;
+      white-space: nowrap;
     }
 
     .icon {
@@ -64,23 +76,16 @@ layout: none
 
     .meta {
       min-width: 0;
-      flex: 1 1 auto;
+      flex: 0 1 auto;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      justify-content: center; /* 텍스트도 middle */
     }
 
     .title {
-      font-size: 14px;
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .sub {
-      font-size: 12px;
-      color: #666;
+      font-size: 16px;   /* 키움 */
+      font-weight: 800;
+      line-height: 1.1;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -94,6 +99,7 @@ layout: none
       background: #111;
       color: #fff;
       flex: 0 0 auto;
+      white-space: nowrap;
     }
 
     .card:active { opacity: 0.92; }
@@ -102,14 +108,15 @@ layout: none
 
 <body>
   <div class="wrap">
-    <a id="adCard" class="card" href="#" aria-label="추천 앱">
-      <span class="badge">추천 앱</span>
-      <img id="adIcon" class="icon" src="" alt="" width="44" height="44" />
-      <div class="meta">
-        <div id="adTitle" class="title"></div>
-        <div id="adSub" class="sub">앱 설명 페이지</div>
+    <a id="adCard" class="card" href="#" aria-label="개발자의 다른 앱">
+      <div class="content">
+        <span class="badge">개발자의 다른 앱</span>
+        <img id="adIcon" class="icon" src="" alt="" width="44" height="44" />
+        <div class="meta">
+          <div id="adTitle" class="title"></div>
+        </div>
+        <span class="cta">보기</span>
       </div>
-      <span class="cta">보기</span>
     </a>
   </div>
 
@@ -155,7 +162,6 @@ layout: none
       return h;
     }
 
-    // tick으로 "시작 앱"을 결정 (최초 선택에만 영향)
     function startIndexFromTick() {
       const url = new URL(window.location.href);
       const tick = url.searchParams.get("tick") || "";
@@ -171,13 +177,12 @@ layout: none
 
     function render(i) {
       const app = apps[i];
-      card.href = ORIGIN + app.href;   // absolute to avoid relative issues
+      card.href = ORIGIN + app.href;
       icon.src = ORIGIN + app.icon;
       icon.alt = app.alt;
       title.textContent = app.title;
     }
 
-    // 부드럽게 전환
     function rollTo(nextIdx) {
       card.classList.add("fade-out");
       setTimeout(() => {
@@ -189,15 +194,11 @@ layout: none
       }, 220);
     }
 
-    // 최초 렌더
     render(idx);
 
-    // 롤링 주기 (ms) - 필요하면 8000/10000 등으로 조정
-    const ROLL_MS = 10000;
-
+    const ROLL_MS = 10000; // 10초마다 변경
     setInterval(() => {
-      const next = (idx + 1) % apps.length;
-      rollTo(next);
+      rollTo((idx + 1) % apps.length);
     }, ROLL_MS);
   </script>
 </body>
