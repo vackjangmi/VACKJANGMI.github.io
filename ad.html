@@ -8,17 +8,16 @@ layout: none
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>추천 앱</title>
   <style>
-    /* No padding / no scroll */
     html, body {
       margin: 0; padding: 0;
       width: 100%; height: 100%;
-      overflow: hidden;
+      overflow: hidden; /* noscroll */
       background: transparent;
       -webkit-text-size-adjust: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
+                   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Centered container */
     .wrap {
       width: 100%;
       height: 100%;
@@ -27,7 +26,7 @@ layout: none
       justify-content: center; /* center */
     }
 
-    /* Card (fills the webview without margins) */
+    /* WebView 안을 꽉 채우는 배너 카드 */
     .card {
       box-sizing: border-box;
       width: 100%;
@@ -35,11 +34,15 @@ layout: none
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 12px; /* 내부 여백만(화면 바깥 여백 X) */
+      padding: 10px 12px; /* 내부 여백만 */
       text-decoration: none;
       color: #111;
       background: #ffffff;
+      transition: opacity 220ms ease;
     }
+
+    .card.fade-out { opacity: 0; }
+    .card.fade-in  { opacity: 1; }
 
     .badge {
       font-size: 11px;
@@ -93,10 +96,7 @@ layout: none
       flex: 0 0 auto;
     }
 
-    /* Make it feel like an in-app banner */
-    .card:active {
-      opacity: 0.92;
-    }
+    .card:active { opacity: 0.92; }
   </style>
 </head>
 
@@ -114,7 +114,6 @@ layout: none
   </div>
 
   <script>
-    // ---- Config ----
     const apps = [
       {
         key: "sudoku",
@@ -146,20 +145,9 @@ layout: none
       },
     ];
 
-    // If you use a custom domain, this is still fine.
     const ORIGIN = window.location.origin;
 
-    // tick 기반으로 "항상 같은 tick은 같은 앱"을 보여주게 (회전/분산)
-    function pickIndexByTick() {
-      const url = new URL(window.location.href);
-      const tickStr = url.searchParams.get("tick") || "";
-      // tick 없으면 시간 기반으로도 회전
-      const seed = tickStr ? hashStringToInt(tickStr) : Math.floor(Date.now() / 1000);
-      return Math.abs(seed) % apps.length;
-    }
-
     function hashStringToInt(str) {
-      // simple deterministic hash
       let h = 0;
       for (let i = 0; i < str.length; i++) {
         h = (h * 31 + str.charCodeAt(i)) | 0;
@@ -167,19 +155,50 @@ layout: none
       return h;
     }
 
-    function render(app) {
-      const card = document.getElementById("adCard");
-      const icon = document.getElementById("adIcon");
-      const title = document.getElementById("adTitle");
+    // tick으로 "시작 앱"을 결정 (최초 선택에만 영향)
+    function startIndexFromTick() {
+      const url = new URL(window.location.href);
+      const tick = url.searchParams.get("tick") || "";
+      if (!tick) return 0;
+      return Math.abs(hashStringToInt(tick)) % apps.length;
+    }
 
-      // absolute URL로 세팅(웹뷰에서 상대경로 이슈 방지)
-      card.href = ORIGIN + app.href;
+    const card = document.getElementById("adCard");
+    const icon = document.getElementById("adIcon");
+    const title = document.getElementById("adTitle");
+
+    let idx = startIndexFromTick();
+
+    function render(i) {
+      const app = apps[i];
+      card.href = ORIGIN + app.href;   // absolute to avoid relative issues
       icon.src = ORIGIN + app.icon;
       icon.alt = app.alt;
       title.textContent = app.title;
     }
 
-    render(apps[pickIndexByTick()]);
+    // 부드럽게 전환
+    function rollTo(nextIdx) {
+      card.classList.add("fade-out");
+      setTimeout(() => {
+        idx = nextIdx;
+        render(idx);
+        card.classList.remove("fade-out");
+        card.classList.add("fade-in");
+        setTimeout(() => card.classList.remove("fade-in"), 220);
+      }, 220);
+    }
+
+    // 최초 렌더
+    render(idx);
+
+    // 롤링 주기 (ms) - 필요하면 8000/10000 등으로 조정
+    const ROLL_MS = 10000;
+
+    setInterval(() => {
+      const next = (idx + 1) % apps.length;
+      rollTo(next);
+    }, ROLL_MS);
   </script>
 </body>
 </html>
