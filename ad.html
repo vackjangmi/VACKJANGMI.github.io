@@ -11,44 +11,23 @@ layout: none
     html, body{
       margin:0; padding:0;
       width:100%; height:100%;
-      overflow:hidden;                 /* noscroll */
+      overflow:hidden;
       background:transparent;
       -webkit-text-size-adjust:100%;
       font-family:-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
                   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-
-    .wrap{
-      width:100%;
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    /* two-layer crossfade stage */
-    .stage{
-      position:relative;
-      width:100%;
-      height:100%;
-      background:#ffffff;
-    }
+    .wrap{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+    .stage{ position:relative; width:100%; height:100%; background:#ffffff; }
 
     .card{
-      position:absolute;
-      inset:0;
+      position:absolute; inset:0;
       box-sizing:border-box;
-      width:100%;
-      height:100%;
+      width:100%; height:100%;
       padding:10px 12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      text-decoration:none;
-      color:#111;
-      background:#ffffff;
+      display:flex; align-items:center; justify-content:space-between;
+      text-decoration:none; color:#111; background:#ffffff;
 
-      /* iOS에서 0이 되면 배경 플래시/언렌더링 느낌이 나는 케이스가 있어 0.001로 둠 */
       opacity:0.001;
       transition:opacity 520ms ease;
       will-change:opacity;
@@ -56,64 +35,35 @@ layout: none
     }
     .card.is-active{ opacity:1; }
 
-    .left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-      flex:1 1 auto;
-    }
-
+    .left{ display:flex; align-items:center; gap:10px; min-width:0; flex:1 1 auto; }
     .badge{
-      font-size:11px;
-      line-height:1;
-      padding:4px 6px;
-      border-radius:999px;
-      background:#f2f2f2;
-      color:#555;
-      flex:0 0 auto;
-      white-space:nowrap;
+      font-size:11px; line-height:1;
+      padding:4px 6px; border-radius:999px;
+      background:#f2f2f2; color:#555;
+      flex:0 0 auto; white-space:nowrap;
     }
-
     .icon{
-      width:44px;
-      height:44px;
-      border-radius:10px;
-      flex:0 0 44px;        /* ✅ 폭/영역 고정 */
-      object-fit:cover;     /* ✅ 표시 자연스럽게 */
+      width:44px; height:44px; border-radius:10px;
+      flex:0 0 44px;
+      object-fit:cover;
       display:block;
-      background:#eee;      /* ✅ 로딩 순간 깜빡임 완화 */
+      background:#eee;
     }
-
     .meta{
-      min-width:0;
-      flex:1 1 auto;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;  /* ✅ title middle 정렬 */
+      min-width:0; flex:1 1 auto;
+      display:flex; flex-direction:column; justify-content:center;
     }
-
     .title{
-      font-size:16px;
-      font-weight:800;
-      line-height:1.15;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size:16px; font-weight:800; line-height:1.15;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
-
     .cta{
-      flex:0 0 auto;
-      margin-left:10px;
-      font-size:12px;
-      font-weight:700;
-      padding:8px 10px;
-      border-radius:10px;
-      background:#111;
-      color:#fff;
+      flex:0 0 auto; margin-left:10px;
+      font-size:12px; font-weight:700;
+      padding:8px 10px; border-radius:10px;
+      background:#111; color:#fff;
       white-space:nowrap;
     }
-
     .card:active{ opacity:0.96; }
   </style>
 </head>
@@ -121,7 +71,6 @@ layout: none
 <body>
   <div class="wrap">
     <div class="stage" aria-label="시리즈 앱">
-      <!-- active -->
       <a id="cardA" class="card is-active" href="#">
         <div class="left">
           <span class="badge">시리즈 앱</span>
@@ -131,7 +80,6 @@ layout: none
         <span class="cta">보기</span>
       </a>
 
-      <!-- next -->
       <a id="cardB" class="card" href="#">
         <div class="left">
           <span class="badge">시리즈 앱</span>
@@ -144,42 +92,21 @@ layout: none
   </div>
 
   <script>
-    const apps = [
-      {
-        key:"sudoku",
-        title:"할만한 스도쿠",
-        webHref:"/apps/sudoku/",
-        icon:"/assets/icons/sudoku-icon.png",
-        alt:"할만한 스도쿠 아이콘",
-        iosHref:"https://apps.apple.com/kr/app/%ED%95%A0%EB%A7%8C%ED%95%9C-%EC%8A%A4%EB%8F%84%EC%BF%A0/id6759184547"
-      },
-      {
-        key:"triangle-hopscotch",
-        title:"할만한 세모 땅따먹기",
-        webHref:"/apps/triangle-hopscotch/",
-        icon:"/assets/icons/triangle-hopscotch-icon.png",
-        alt:"할만한 세모 땅따먹기 아이콘",
-        iosHref:"https://apps.apple.com/kr/app/%ED%95%A0%EB%A7%8C%ED%95%9C-%EC%84%B8%EB%AA%A8-%EB%95%85%EB%94%B0%EB%A8%B9%EA%B8%B0/id6759189170"
-      },
-      {
-        key:"memorygame",
-        title:"할만한 메모리 게임",
-        webHref:"/apps/memorygame/",
-        icon:"/assets/icons/memorygame-icon.png",
-        alt:"할만한 메모리 게임 아이콘",
-        iosHref:"https://apps.apple.com/kr/app/%ED%95%A0%EB%A7%8C%ED%95%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B2%8C%EC%9E%84/id6759896288"
-      },
-      {
-        key:"scanote",
-        title:"쓸만한 스캔노트",
-        webHref:"/apps/scanote/",
-        icon:"/assets/icons/scanote-icon.png",
-        alt:"쓸만한 스캔노트 아이콘",
-        iosHref:"https://apps.apple.com/kr/app/%EC%93%B8%EB%A7%8C%ED%95%9C-%EC%8A%A4%EC%BA%94%EB%85%B8%ED%8A%B8/id6759282130"
-      },
+    const ALL_APPS = [
+      { key:"sudoku", title:"할만한 스도쿠", webHref:"/apps/sudoku/", icon:"/assets/icons/sudoku-icon.png", alt:"할만한 스도쿠 아이콘", iosHref:"https://apps.apple.com/app/id6759184547" },
+      { key:"triangle-hopscotch", title:"할만한 세모 땅따먹기", webHref:"/apps/triangle-hopscotch/", icon:"/assets/icons/triangle-hopscotch-icon.png", alt:"할만한 세모 땅따먹기 아이콘", iosHref:"https://apps.apple.com/app/id6759189170" },
+      { key:"memorygame", title:"할만한 메모리 게임", webHref:"/apps/memorygame/", icon:"/assets/icons/memorygame-icon.png", alt:"할만한 메모리 게임 아이콘", iosHref:"https://apps.apple.com/app/id6759896288" },
+      { key:"scanote", title:"쓸만한 스캔노트", webHref:"/apps/scanote/", icon:"/assets/icons/scanote-icon.png", alt:"쓸만한 스캔노트 아이콘", iosHref:"https://apps.apple.com/app/id6759282130" },
     ];
 
     const ORIGIN = window.location.origin;
+
+    function isIOS(){
+      const ua = navigator.userAgent || "";
+      const iOS = /iPad|iPhone|iPod/.test(ua);
+      const iPadOS13Plus = (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      return iOS || iPadOS13Plus;
+    }
 
     function hashStringToInt(str){
       let h = 0;
@@ -187,18 +114,13 @@ layout: none
       return h;
     }
 
-    function startIndexFromTick(){
-      const url = new URL(window.location.href);
-      const tick = url.searchParams.get("tick") || "";
-      if (!tick) return 0;
-      return Math.abs(hashStringToInt(tick)) % apps.length;
-    }
-
-    function isIOS(){
-      const ua = navigator.userAgent || "";
-      const iOS = /iPad|iPhone|iPod/.test(ua);
-      const iPadOS13Plus = (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-      return iOS || iPadOS13Plus;
+    function preloadImage(url){
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+      });
     }
 
     function fillCard(cardEl, app){
@@ -213,16 +135,23 @@ layout: none
       titleEl.textContent = app.title;
     }
 
-    // ✅ 프리로드: 캐시에 올리고 디코딩까지 최대한 끝낸 뒤 전환
-    function preloadImage(url){
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-      });
+    // ---- URL params ----
+    const url = new URL(window.location.href);
+    const tick = url.searchParams.get("tick") || "";
+    const excludeKey = (url.searchParams.get("key") || "").trim();
+
+    // ---- filtered list (exclude current app) ----
+    let apps = ALL_APPS.filter(a => a.key !== excludeKey);
+
+    // safety: excludeKey가 이상해서 0개가 되면 전체로 되돌림
+    if (apps.length === 0) apps = ALL_APPS.slice();
+
+    function startIndexFromTick(){
+      if (!tick) return 0;
+      return Math.abs(hashStringToInt(tick)) % apps.length;
     }
 
+    // ---- crossfade setup ----
     const cardA = document.getElementById("cardA");
     const cardB = document.getElementById("cardB");
 
@@ -245,10 +174,7 @@ layout: none
 
       const app = apps[nextIdx];
 
-      // next 카드에 미리 채우고,
       fillCard(next, app);
-
-      // ✅ 아이콘이 로드된 다음에만 crossfade 시작
       await preloadImage(ORIGIN + app.icon);
 
       next.classList.add("is-active");
@@ -256,16 +182,17 @@ layout: none
 
       setTimeout(() => {
         idx = nextIdx;
-        const tmp = active;
-        active = next;
-        next = tmp;
+        const tmp = active; active = next; next = tmp;
         switching = false;
       }, FADE_MS + 30);
     }
 
-    setInterval(() => {
-      switchTo((idx + 1) % apps.length);
-    }, ROLL_MS);
+    // 1개만 남아도 setInterval은 돌지만 화면은 안 바뀌게 처리
+    if (apps.length > 1) {
+      setInterval(() => {
+        switchTo((idx + 1) % apps.length);
+      }, ROLL_MS);
+    }
   </script>
 </body>
 </html>
