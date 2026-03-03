@@ -28,12 +28,16 @@ layout: none
       display:flex; align-items:center; justify-content:space-between;
       text-decoration:none; color:#111; background:#ffffff;
 
-      opacity:0.001;
+      opacity:0;                 /* ✅ 완전 투명 */
+      pointer-events:none;       /* ✅ 클릭/터치 막기 */
       transition:opacity 520ms ease;
       will-change:opacity;
       transform:translateZ(0);
     }
-    .card.is-active{ opacity:1; }
+    .card.is-active{
+      opacity:1;
+      pointer-events:auto;       /* ✅ 보이는 카드만 클릭 가능 */
+    }
 
     .left{ display:flex; align-items:center; gap:10px; min-width:0; flex:1 1 auto; }
     .badge{
@@ -135,15 +139,11 @@ layout: none
       titleEl.textContent = app.title;
     }
 
-    // ---- URL params ----
     const url = new URL(window.location.href);
     const tick = url.searchParams.get("tick") || "";
     const excludeKey = (url.searchParams.get("key") || "").trim();
 
-    // ---- filtered list (exclude current app) ----
     let apps = ALL_APPS.filter(a => a.key !== excludeKey);
-
-    // safety: excludeKey가 이상해서 0개가 되면 전체로 되돌림
     if (apps.length === 0) apps = ALL_APPS.slice();
 
     function startIndexFromTick(){
@@ -151,7 +151,6 @@ layout: none
       return Math.abs(hashStringToInt(tick)) % apps.length;
     }
 
-    // ---- crossfade setup ----
     const cardA = document.getElementById("cardA");
     const cardB = document.getElementById("cardB");
 
@@ -187,7 +186,6 @@ layout: none
       }, FADE_MS + 30);
     }
 
-    // 1개만 남아도 setInterval은 돌지만 화면은 안 바뀌게 처리
     if (apps.length > 1) {
       setInterval(() => {
         switchTo((idx + 1) % apps.length);
