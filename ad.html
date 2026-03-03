@@ -8,197 +8,205 @@ layout: none
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>개발자의 다른 앱</title>
   <style>
-    html, body {
-      margin: 0; padding: 0;
-      width: 100%; height: 100%;
-      overflow: hidden; /* noscroll */
-      background: transparent;
-      -webkit-text-size-adjust: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
-                   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    html, body{
+      margin:0; padding:0;
+      width:100%; height:100%;
+      overflow:hidden;
+      background:transparent;
+      -webkit-text-size-adjust:100%;
+      font-family:-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
+                  "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    .wrap {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;     /* middle */
-      justify-content: center; /* center */
+    .wrap{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    /* WebView 안을 꽉 채우는 배너 카드 */
-    .card {
-      box-sizing: border-box;
-      width: 100%;
-      height: 100%;
-      text-decoration: none;
-      color: #111;
-      background: #ffffff;
-      transition: opacity 220ms ease;
-      display: flex;
-      align-items: center;
-      justify-content: center; /* 카드 안 컨텐츠도 가운데 */
-      padding: 0; /* 바깥 여백 느낌 없애기 */
+    /* two-layer crossfade stage */
+    .stage{
+      position:relative;
+      width:100%;
+      height:100%;
+      background:#ffffff;
     }
 
-    .card.fade-out { opacity: 0; }
-    .card.fade-in  { opacity: 1; }
+    .card{
+      position:absolute;
+      inset:0;
+      box-sizing:border-box;
+      width:100%;
+      height:100%;
+      padding:10px 12px;
+      display:flex;
+      align-items:center;           /* 전체 content 세로 middle */
+      justify-content:space-between;/* 좌/우 정렬 */
+      text-decoration:none;
+      color:#111;
+      background:#ffffff;
 
-    /* 가운데 정렬된 내용 묶음 */
-    .content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 10px 12px; /* 내부 여백만 */
-      max-width: 100%;
-      box-sizing: border-box;
+      opacity:0;
+      transition:opacity 500ms ease;
+      will-change:opacity;
+      transform:translateZ(0);
+    }
+    .card.is-active{ opacity:1; }
+
+    /* left block */
+    .left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+      flex:1 1 auto;
     }
 
-    .badge {
-      font-size: 11px;
-      line-height: 1;
-      padding: 4px 6px;
-      border-radius: 999px;
-      background: #f2f2f2;
-      color: #555;
-      flex: 0 0 auto;
-      white-space: nowrap;
+    .badge{
+      font-size:11px;
+      line-height:1;
+      padding:4px 6px;
+      border-radius:999px;
+      background:#f2f2f2;
+      color:#555;
+      flex:0 0 auto;
+      white-space:nowrap;
     }
 
-    .icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      flex: 0 0 auto;
-      display: block;
+    .icon{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      flex:0 0 auto;
+      display:block;
     }
 
-    .meta {
-      min-width: 0;
-      flex: 0 1 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* 텍스트도 middle */
+    /* title middle 정렬(세로) */
+    .meta{
+      min-width:0;
+      flex:1 1 auto;
+      display:flex;
+      flex-direction:column;
+      justify-content:center; /* ✅ title block middle */
     }
 
-    .title {
-      font-size: 16px;   /* 키움 */
-      font-weight: 800;
-      line-height: 1.1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .title{
+      font-size:16px;
+      font-weight:800;
+      line-height:1.15;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .cta {
-      font-size: 12px;
-      font-weight: 700;
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: #111;
-      color: #fff;
-      flex: 0 0 auto;
-      white-space: nowrap;
+    /* right CTA */
+    .cta{
+      flex:0 0 auto;
+      margin-left:10px;
+      font-size:12px;
+      font-weight:700;
+      padding:8px 10px;
+      border-radius:10px;
+      background:#111;
+      color:#fff;
+      white-space:nowrap;
     }
 
-    .card:active { opacity: 0.92; }
+    .card:active{ opacity:0.96; }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <a id="adCard" class="card" href="#" aria-label="개발자의 다른 앱">
-      <div class="content">
-        <span class="badge">개발자의 다른 앱</span>
-        <img id="adIcon" class="icon" src="" alt="" width="44" height="44" />
-        <div class="meta">
-          <div id="adTitle" class="title"></div>
+    <div class="stage" aria-label="개발자의 다른 앱">
+      <!-- active -->
+      <a id="cardA" class="card is-active" href="#">
+        <div class="left">
+          <span class="badge">개발자의 다른 앱</span>
+          <img class="icon" data-role="icon" src="" alt="" width="44" height="44" />
+          <div class="meta">
+            <div class="title" data-role="title"></div>
+          </div>
         </div>
         <span class="cta">보기</span>
-      </div>
-    </a>
+      </a>
+
+      <!-- next -->
+      <a id="cardB" class="card" href="#">
+        <div class="left">
+          <span class="badge">개발자의 다른 앱</span>
+          <img class="icon" data-role="icon" src="" alt="" width="44" height="44" />
+          <div class="meta">
+            <div class="title" data-role="title"></div>
+          </div>
+        </div>
+        <span class="cta">보기</span>
+      </a>
+    </div>
   </div>
 
   <script>
     const apps = [
-      {
-        key: "sudoku",
-        title: "할만한 스도쿠",
-        href: "/apps/sudoku/",
-        icon: "/assets/icons/sudoku-icon.png",
-        alt: "할만한 스도쿠 아이콘",
-      },
-      {
-        key: "triangle-hopscotch",
-        title: "할만한 세모 땅따먹기",
-        href: "/apps/triangle-hopscotch/",
-        icon: "/assets/icons/triangle-hopscotch-icon.png",
-        alt: "할만한 세모 땅따먹기 아이콘",
-      },
-      {
-        key: "memorygame",
-        title: "할만한 메모리 게임",
-        href: "/apps/memorygame/",
-        icon: "/assets/icons/memorygame-icon.png",
-        alt: "할만한 메모리 게임 아이콘",
-      },
-      {
-        key: "scanote",
-        title: "쓸만한 스캔노트",
-        href: "/apps/scanote/",
-        icon: "/assets/icons/scanote-icon.png",
-        alt: "쓸만한 스캔노트 아이콘",
-      },
+      { key:"sudoku", title:"할만한 스도쿠", href:"/apps/sudoku/", icon:"/assets/icons/sudoku-icon.png", alt:"할만한 스도쿠 아이콘" },
+      { key:"triangle-hopscotch", title:"할만한 세모 땅따먹기", href:"/apps/triangle-hopscotch/", icon:"/assets/icons/triangle-hopscotch-icon.png", alt:"할만한 세모 땅따먹기 아이콘" },
+      { key:"memorygame", title:"할만한 메모리 게임", href:"/apps/memorygame/", icon:"/assets/icons/memorygame-icon.png", alt:"할만한 메모리 게임 아이콘" },
+      { key:"scanote", title:"쓸만한 스캔노트", href:"/apps/scanote/", icon:"/assets/icons/scanote-icon.png", alt:"쓸만한 스캔노트 아이콘" },
     ];
 
     const ORIGIN = window.location.origin;
 
-    function hashStringToInt(str) {
+    function hashStringToInt(str){
       let h = 0;
-      for (let i = 0; i < str.length; i++) {
-        h = (h * 31 + str.charCodeAt(i)) | 0;
-      }
+      for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
       return h;
     }
 
-    function startIndexFromTick() {
+    function startIndexFromTick(){
       const url = new URL(window.location.href);
       const tick = url.searchParams.get("tick") || "";
       if (!tick) return 0;
       return Math.abs(hashStringToInt(tick)) % apps.length;
     }
 
-    const card = document.getElementById("adCard");
-    const icon = document.getElementById("adIcon");
-    const title = document.getElementById("adTitle");
+    function fillCard(cardEl, app){
+      cardEl.href = ORIGIN + app.href;
+      const iconEl = cardEl.querySelector('[data-role="icon"]');
+      const titleEl = cardEl.querySelector('[data-role="title"]');
+      iconEl.src = ORIGIN + app.icon;
+      iconEl.alt = app.alt;
+      titleEl.textContent = app.title;
+    }
+
+    const cardA = document.getElementById("cardA");
+    const cardB = document.getElementById("cardB");
+
+    let active = cardA;
+    let next = cardB;
 
     let idx = startIndexFromTick();
 
-    function render(i) {
-      const app = apps[i];
-      card.href = ORIGIN + app.href;
-      icon.src = ORIGIN + app.icon;
-      icon.alt = app.alt;
-      title.textContent = app.title;
-    }
+    fillCard(active, apps[idx]);
+    active.classList.add("is-active");
+    next.classList.remove("is-active");
 
-    function rollTo(nextIdx) {
-      card.classList.add("fade-out");
+    const ROLL_MS = 10000;
+    const FADE_MS = 500;
+
+    setInterval(() => {
+      const nextIdx = (idx + 1) % apps.length;
+      fillCard(next, apps[nextIdx]);
+
+      next.classList.add("is-active");
+      active.classList.remove("is-active");
+
       setTimeout(() => {
         idx = nextIdx;
-        render(idx);
-        card.classList.remove("fade-out");
-        card.classList.add("fade-in");
-        setTimeout(() => card.classList.remove("fade-in"), 220);
-      }, 220);
-    }
-
-    render(idx);
-
-    const ROLL_MS = 10000; // 10초마다 변경
-    setInterval(() => {
-      rollTo((idx + 1) % apps.length);
+        const tmp = active;
+        active = next;
+        next = tmp;
+      }, FADE_MS + 30);
     }, ROLL_MS);
   </script>
 </body>
