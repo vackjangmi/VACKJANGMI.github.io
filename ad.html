@@ -1,6 +1,185 @@
-<html>
-<head></head>
+---
+layout: none
+---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>추천 앱</title>
+  <style>
+    /* No padding / no scroll */
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: transparent;
+      -webkit-text-size-adjust: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Centered container */
+    .wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;     /* middle */
+      justify-content: center; /* center */
+    }
+
+    /* Card (fills the webview without margins) */
+    .card {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px; /* 내부 여백만(화면 바깥 여백 X) */
+      text-decoration: none;
+      color: #111;
+      background: #ffffff;
+    }
+
+    .badge {
+      font-size: 11px;
+      line-height: 1;
+      padding: 4px 6px;
+      border-radius: 999px;
+      background: #f2f2f2;
+      color: #555;
+      flex: 0 0 auto;
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      flex: 0 0 auto;
+      display: block;
+    }
+
+    .meta {
+      min-width: 0;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sub {
+      font-size: 12px;
+      color: #666;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cta {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #111;
+      color: #fff;
+      flex: 0 0 auto;
+    }
+
+    /* Make it feel like an in-app banner */
+    .card:active {
+      opacity: 0.92;
+    }
+  </style>
+</head>
+
 <body>
-<center>AD IMAGE</center>
+  <div class="wrap">
+    <a id="adCard" class="card" href="#" aria-label="추천 앱">
+      <span class="badge">추천 앱</span>
+      <img id="adIcon" class="icon" src="" alt="" width="44" height="44" />
+      <div class="meta">
+        <div id="adTitle" class="title"></div>
+        <div id="adSub" class="sub">앱 설명 페이지</div>
+      </div>
+      <span class="cta">보기</span>
+    </a>
+  </div>
+
+  <script>
+    // ---- Config ----
+    const apps = [
+      {
+        key: "sudoku",
+        title: "할만한 스도쿠",
+        href: "/apps/sudoku/",
+        icon: "/assets/icons/sudoku-icon.png",
+        alt: "할만한 스도쿠 아이콘",
+      },
+      {
+        key: "triangle-hopscotch",
+        title: "할만한 세모 땅따먹기",
+        href: "/apps/triangle-hopscotch/",
+        icon: "/assets/icons/triangle-hopscotch-icon.png",
+        alt: "할만한 세모 땅따먹기 아이콘",
+      },
+      {
+        key: "memorygame",
+        title: "할만한 메모리 게임",
+        href: "/apps/memorygame/",
+        icon: "/assets/icons/memorygame-icon.png",
+        alt: "할만한 메모리 게임 아이콘",
+      },
+      {
+        key: "scanote",
+        title: "쓸만한 스캔노트",
+        href: "/apps/scanote/",
+        icon: "/assets/icons/scanote-icon.png",
+        alt: "쓸만한 스캔노트 아이콘",
+      },
+    ];
+
+    // If you use a custom domain, this is still fine.
+    const ORIGIN = window.location.origin;
+
+    // tick 기반으로 "항상 같은 tick은 같은 앱"을 보여주게 (회전/분산)
+    function pickIndexByTick() {
+      const url = new URL(window.location.href);
+      const tickStr = url.searchParams.get("tick") || "";
+      // tick 없으면 시간 기반으로도 회전
+      const seed = tickStr ? hashStringToInt(tickStr) : Math.floor(Date.now() / 1000);
+      return Math.abs(seed) % apps.length;
+    }
+
+    function hashStringToInt(str) {
+      // simple deterministic hash
+      let h = 0;
+      for (let i = 0; i < str.length; i++) {
+        h = (h * 31 + str.charCodeAt(i)) | 0;
+      }
+      return h;
+    }
+
+    function render(app) {
+      const card = document.getElementById("adCard");
+      const icon = document.getElementById("adIcon");
+      const title = document.getElementById("adTitle");
+
+      // absolute URL로 세팅(웹뷰에서 상대경로 이슈 방지)
+      card.href = ORIGIN + app.href;
+      icon.src = ORIGIN + app.icon;
+      icon.alt = app.alt;
+      title.textContent = app.title;
+    }
+
+    render(apps[pickIndexByTick()]);
+  </script>
 </body>
 </html>
