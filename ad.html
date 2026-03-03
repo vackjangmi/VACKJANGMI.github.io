@@ -11,12 +11,13 @@ layout: none
     html, body{
       margin:0; padding:0;
       width:100%; height:100%;
-      overflow:hidden;
+      overflow:hidden;                 /* noscroll */
       background:transparent;
       -webkit-text-size-adjust:100%;
       font-family:-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
                   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
+
     .wrap{
       width:100%;
       height:100%;
@@ -24,12 +25,15 @@ layout: none
       align-items:center;
       justify-content:center;
     }
+
+    /* two-layer crossfade stage */
     .stage{
       position:relative;
       width:100%;
       height:100%;
       background:#ffffff;
     }
+
     .card{
       position:absolute;
       inset:0;
@@ -44,8 +48,9 @@ layout: none
       color:#111;
       background:#ffffff;
 
-      opacity:0;
-      transition:opacity 500ms ease;
+      /* iOS에서 0이 되면 배경 플래시/언렌더링 느낌이 나는 케이스가 있어 0.001로 둠 */
+      opacity:0.001;
+      transition:opacity 520ms ease;
       will-change:opacity;
       transform:translateZ(0);
     }
@@ -58,6 +63,7 @@ layout: none
       min-width:0;
       flex:1 1 auto;
     }
+
     .badge{
       font-size:11px;
       line-height:1;
@@ -68,20 +74,25 @@ layout: none
       flex:0 0 auto;
       white-space:nowrap;
     }
+
     .icon{
       width:44px;
       height:44px;
       border-radius:10px;
-      flex:0 0 auto;
+      flex:0 0 44px;        /* ✅ 폭/영역 고정 */
+      object-fit:cover;     /* ✅ 표시 자연스럽게 */
       display:block;
+      background:#eee;      /* ✅ 로딩 순간 깜빡임 완화 */
     }
+
     .meta{
       min-width:0;
       flex:1 1 auto;
       display:flex;
       flex-direction:column;
-      justify-content:center; /* title middle */
+      justify-content:center;  /* ✅ title middle 정렬 */
     }
+
     .title{
       font-size:16px;
       font-weight:800;
@@ -90,6 +101,7 @@ layout: none
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
     .cta{
       flex:0 0 auto;
       margin-left:10px;
@@ -101,6 +113,7 @@ layout: none
       color:#fff;
       white-space:nowrap;
     }
+
     .card:active{ opacity:0.96; }
   </style>
 </head>
@@ -108,6 +121,7 @@ layout: none
 <body>
   <div class="wrap">
     <div class="stage" aria-label="시리즈 앱">
+      <!-- active -->
       <a id="cardA" class="card is-active" href="#">
         <div class="left">
           <span class="badge">시리즈 앱</span>
@@ -117,6 +131,7 @@ layout: none
         <span class="cta">보기</span>
       </a>
 
+      <!-- next -->
       <a id="cardB" class="card" href="#">
         <div class="left">
           <span class="badge">시리즈 앱</span>
@@ -180,7 +195,6 @@ layout: none
     }
 
     function isIOS(){
-      // iOS WebView/사파리 대부분 커버 (iPadOS도 포함)
       const ua = navigator.userAgent || "";
       const iOS = /iPad|iPhone|iPod/.test(ua);
       const iPadOS13Plus = (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -199,6 +213,16 @@ layout: none
       titleEl.textContent = app.title;
     }
 
+    // ✅ 프리로드: 캐시에 올리고 디코딩까지 최대한 끝낸 뒤 전환
+    function preloadImage(url){
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+      });
+    }
+
     const cardA = document.getElementById("cardA");
     const cardB = document.getElementById("cardB");
 
@@ -212,11 +236,20 @@ layout: none
     next.classList.remove("is-active");
 
     const ROLL_MS = 10000;
-    const FADE_MS = 500;
+    const FADE_MS = 520;
+    let switching = false;
 
-    setInterval(() => {
-      const nextIdx = (idx + 1) % apps.length;
-      fillCard(next, apps[nextIdx]);
+    async function switchTo(nextIdx){
+      if (switching) return;
+      switching = true;
+
+      const app = apps[nextIdx];
+
+      // next 카드에 미리 채우고,
+      fillCard(next, app);
+
+      // ✅ 아이콘이 로드된 다음에만 crossfade 시작
+      await preloadImage(ORIGIN + app.icon);
 
       next.classList.add("is-active");
       active.classList.remove("is-active");
@@ -226,7 +259,12 @@ layout: none
         const tmp = active;
         active = next;
         next = tmp;
+        switching = false;
       }, FADE_MS + 30);
+    }
+
+    setInterval(() => {
+      switchTo((idx + 1) % apps.length);
     }, ROLL_MS);
   </script>
 </body>
