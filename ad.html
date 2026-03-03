@@ -17,7 +17,6 @@ layout: none
       font-family:-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR",
                   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-
     .wrap{
       width:100%;
       height:100%;
@@ -25,15 +24,12 @@ layout: none
       align-items:center;
       justify-content:center;
     }
-
-    /* two-layer crossfade stage */
     .stage{
       position:relative;
       width:100%;
       height:100%;
       background:#ffffff;
     }
-
     .card{
       position:absolute;
       inset:0;
@@ -42,8 +38,8 @@ layout: none
       height:100%;
       padding:10px 12px;
       display:flex;
-      align-items:center;           /* 전체 content 세로 middle */
-      justify-content:space-between;/* 좌/우 정렬 */
+      align-items:center;
+      justify-content:space-between;
       text-decoration:none;
       color:#111;
       background:#ffffff;
@@ -55,7 +51,6 @@ layout: none
     }
     .card.is-active{ opacity:1; }
 
-    /* left block */
     .left{
       display:flex;
       align-items:center;
@@ -63,7 +58,6 @@ layout: none
       min-width:0;
       flex:1 1 auto;
     }
-
     .badge{
       font-size:11px;
       line-height:1;
@@ -74,7 +68,6 @@ layout: none
       flex:0 0 auto;
       white-space:nowrap;
     }
-
     .icon{
       width:44px;
       height:44px;
@@ -82,16 +75,13 @@ layout: none
       flex:0 0 auto;
       display:block;
     }
-
-    /* title middle 정렬(세로) */
     .meta{
       min-width:0;
       flex:1 1 auto;
       display:flex;
       flex-direction:column;
-      justify-content:center; /* ✅ title block middle */
+      justify-content:center; /* title middle */
     }
-
     .title{
       font-size:16px;
       font-weight:800;
@@ -100,8 +90,6 @@ layout: none
       overflow:hidden;
       text-overflow:ellipsis;
     }
-
-    /* right CTA */
     .cta{
       flex:0 0 auto;
       margin-left:10px;
@@ -113,7 +101,6 @@ layout: none
       color:#fff;
       white-space:nowrap;
     }
-
     .card:active{ opacity:0.96; }
   </style>
 </head>
@@ -121,26 +108,20 @@ layout: none
 <body>
   <div class="wrap">
     <div class="stage" aria-label="개발자의 다른 앱">
-      <!-- active -->
       <a id="cardA" class="card is-active" href="#">
         <div class="left">
           <span class="badge">개발자의 다른 앱</span>
           <img class="icon" data-role="icon" src="" alt="" width="44" height="44" />
-          <div class="meta">
-            <div class="title" data-role="title"></div>
-          </div>
+          <div class="meta"><div class="title" data-role="title"></div></div>
         </div>
         <span class="cta">보기</span>
       </a>
 
-      <!-- next -->
       <a id="cardB" class="card" href="#">
         <div class="left">
           <span class="badge">개발자의 다른 앱</span>
           <img class="icon" data-role="icon" src="" alt="" width="44" height="44" />
-          <div class="meta">
-            <div class="title" data-role="title"></div>
-          </div>
+          <div class="meta"><div class="title" data-role="title"></div></div>
         </div>
         <span class="cta">보기</span>
       </a>
@@ -149,10 +130,38 @@ layout: none
 
   <script>
     const apps = [
-      { key:"sudoku", title:"할만한 스도쿠", href:"/apps/sudoku/", icon:"/assets/icons/sudoku-icon.png", alt:"할만한 스도쿠 아이콘" },
-      { key:"triangle-hopscotch", title:"할만한 세모 땅따먹기", href:"/apps/triangle-hopscotch/", icon:"/assets/icons/triangle-hopscotch-icon.png", alt:"할만한 세모 땅따먹기 아이콘" },
-      { key:"memorygame", title:"할만한 메모리 게임", href:"/apps/memorygame/", icon:"/assets/icons/memorygame-icon.png", alt:"할만한 메모리 게임 아이콘" },
-      { key:"scanote", title:"쓸만한 스캔노트", href:"/apps/scanote/", icon:"/assets/icons/scanote-icon.png", alt:"쓸만한 스캔노트 아이콘" },
+      {
+        key:"sudoku",
+        title:"할만한 스도쿠",
+        webHref:"/apps/sudoku/",
+        icon:"/assets/icons/sudoku-icon.png",
+        alt:"할만한 스도쿠 아이콘",
+        iosHref:"https://apps.apple.com/kr/app/%ED%95%A0%EB%A7%8C%ED%95%9C-%EC%8A%A4%EB%8F%84%EC%BF%A0/id6759184547"
+      },
+      {
+        key:"triangle-hopscotch",
+        title:"할만한 세모 땅따먹기",
+        webHref:"/apps/triangle-hopscotch/",
+        icon:"/assets/icons/triangle-hopscotch-icon.png",
+        alt:"할만한 세모 땅따먹기 아이콘",
+        iosHref:"https://apps.apple.com/kr/app/%ED%95%A0%EB%A7%8C%ED%95%9C-%EC%84%B8%EB%AA%A8-%EB%95%85%EB%94%B0%EB%A8%B9%EA%B8%B0/id6759189170"
+      },
+      {
+        key:"memorygame",
+        title:"할만한 메모리 게임",
+        webHref:"/apps/memorygame/",
+        icon:"/assets/icons/memorygame-icon.png",
+        alt:"할만한 메모리 게임 아이콘",
+        iosHref:"https://apps.apple.com/kr/app/%ED%95%A0%EB%A7%8C%ED%95%9C-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B2%8C%EC%9E%84/id6759896288"
+      },
+      {
+        key:"scanote",
+        title:"쓸만한 스캔노트",
+        webHref:"/apps/scanote/",
+        icon:"/assets/icons/scanote-icon.png",
+        alt:"쓸만한 스캔노트 아이콘",
+        iosHref:"https://apps.apple.com/kr/app/%EC%93%B8%EB%A7%8C%ED%95%9C-%EC%8A%A4%EC%BA%94%EB%85%B8%ED%8A%B8/id6759282130"
+      },
     ];
 
     const ORIGIN = window.location.origin;
@@ -170,10 +179,21 @@ layout: none
       return Math.abs(hashStringToInt(tick)) % apps.length;
     }
 
+    function isIOS(){
+      // iOS WebView/사파리 대부분 커버 (iPadOS도 포함)
+      const ua = navigator.userAgent || "";
+      const iOS = /iPad|iPhone|iPod/.test(ua);
+      const iPadOS13Plus = (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      return iOS || iPadOS13Plus;
+    }
+
     function fillCard(cardEl, app){
-      cardEl.href = ORIGIN + app.href;
+      const href = isIOS() ? app.iosHref : (ORIGIN + app.webHref);
+      cardEl.href = href;
+
       const iconEl = cardEl.querySelector('[data-role="icon"]');
       const titleEl = cardEl.querySelector('[data-role="title"]');
+
       iconEl.src = ORIGIN + app.icon;
       iconEl.alt = app.alt;
       titleEl.textContent = app.title;
