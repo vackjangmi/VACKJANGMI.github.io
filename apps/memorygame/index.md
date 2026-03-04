@@ -16,10 +16,9 @@ privacy_url: /apps/memorygame/privacy
 
 ## 📥 앱 다운로드
 
-- iOS: 준비 중
+- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6759896288)
 - Android:
-    - 원스토어: 준비 중
-    - 갤럭시 스토어: 준비 중
+    - [원스토어에서 다운로드 준비중]
 
 ## 🔏 개인정보 처리 방침
 
