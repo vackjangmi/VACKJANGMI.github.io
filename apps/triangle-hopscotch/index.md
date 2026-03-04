@@ -16,7 +16,7 @@ privacy_url: /apps/triangle-hopscotch/privacy
 
 ## 📥 앱 다운로드
 
-- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6759184547)
+- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6759189170)
 - Android:
     - [원스토어에서 다운로드](https://m.onestore.co.kr/v2/app/0001004534)
 
