@@ -16,7 +16,7 @@ privacy_url: /apps/scanote/privacy
 
 ## 📥 앱 다운로드
 
-- iOS: [App Store에서 다운로드](https://apps.apple.com/kr/app/%EC%93%B8%EB%A7%8C%ED%95%9C-%EC%8A%A4%EC%BA%94%EB%85%B8%ED%8A%B8/id6759282130)
+- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6759282130)
 - Android:
     - [원스토어에서 다운로드 준비중]
 
