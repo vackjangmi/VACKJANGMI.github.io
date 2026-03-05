@@ -112,6 +112,52 @@ layout: none
       return iOS || iPadOS13Plus;
     }
 
+    // ✅ 언어 결정: ?lang=en 우선, 없으면 브라우저 언어로 판단
+    function getLang(){
+      const url = new URL(window.location.href);
+      const q = (url.searchParams.get("lang") || "").toLowerCase();
+      if (q === "en" || q === "en-us" || q === "en-gb") return "en";
+      if (q === "ko" || q === "ko-kr") return "ko";
+
+      const navLang = (navigator.language || navigator.userLanguage || "ko").toLowerCase();
+      return navLang.startsWith("en") ? "en" : "ko";
+    }
+
+    // ✅ i18n 텍스트
+    const I18N = {
+      ko: {
+        badge: "시리즈 앱",
+        cta: "받기",
+        titles: {
+          "sudoku": "할만한 스도쿠",
+          "memorygame": "할만한 메모리 게임",
+          "triangle-hopscotch": "할만한 세모 땅따먹기",
+          "scanote": "쓸만한 스캔노트",
+        },
+        iconAlt: (title) => `${title} 아이콘`,
+        stageAria: "시리즈 앱",
+      },
+      en: {
+        badge: "Series Apps",
+        cta: "Get",
+        titles: {
+          "sudoku": "Solid Sudoku",
+          "memorygame": "Solid Memory Game",
+          "triangle-hopscotch": "Solid Triangle Territory",
+          "scanote": "Solid Scanote",
+        },
+        iconAlt: (title) => `${title} icon`,
+        stageAria: "Series apps",
+      }
+    };
+
+    const LANG = getLang();
+    const T = I18N[LANG] || I18N.ko;
+
+    // ✅ stage aria도 언어에 따라
+    const stageEl = document.querySelector(".stage");
+    if (stageEl) stageEl.setAttribute("aria-label", T.stageAria);
+
     function hashStringToInt(str){
       let h = 0;
       for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
@@ -131,12 +177,20 @@ layout: none
       const href = isIOS() ? app.iosHref : (ORIGIN + app.webHref);
       cardEl.href = href;
 
-      const iconEl = cardEl.querySelector('[data-role="icon"]');
+      const iconEl  = cardEl.querySelector('[data-role="icon"]');
       const titleEl = cardEl.querySelector('[data-role="title"]');
+      const badgeEl = cardEl.querySelector('.badge');
+      const ctaEl   = cardEl.querySelector('.cta');
+
+      // ✅ 제목/alt을 key 기반으로 언어별 매핑
+      const localizedTitle = T.titles[app.key] || app.title;
 
       iconEl.src = ORIGIN + app.icon;
-      iconEl.alt = app.alt;
-      titleEl.textContent = app.title;
+      iconEl.alt = T.iconAlt(localizedTitle);
+      titleEl.textContent = localizedTitle;
+
+      if (badgeEl) badgeEl.textContent = T.badge;
+      if (ctaEl) ctaEl.textContent = T.cta;
     }
 
     const url = new URL(window.location.href);
