@@ -24,6 +24,6 @@ privacy_url: /apps/triangle-hopscotch/privacy
 
 ["할만한 세모 땅따먹기" 개인정보처리방침](/apps/triangle-hopscotch/privacy)
 
-## 🧑‍💻 개발자 연락처
+## 🧑‍💻 개발자 소개
 
-**이메일:** sooyeol86@gmail.com
+{% include shared-developer.md %}

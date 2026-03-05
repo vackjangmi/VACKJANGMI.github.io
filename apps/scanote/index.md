@@ -25,6 +25,6 @@ privacy_url: /apps/scanote/privacy
 
 ["쓸만한 스캔노트" 개인정보처리방침](/apps/scanote/privacy)
 
-## 🧑‍💻 개발자 연락처
+## 🧑‍💻 개발자 소개
 
-**이메일:** sooyeol86@gmail.com
+{% include shared-developer.md %}
