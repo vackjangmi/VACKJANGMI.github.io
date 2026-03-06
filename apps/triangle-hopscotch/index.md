@@ -4,7 +4,7 @@ title: 할만한 세모 땅따먹기
 privacy_url: /apps/triangle-hopscotch/privacy
 ---
 
-# 할만한 세모 땅따먹기
+# 🇰🇷 할만한 세모 땅따먹기
 
 ## ⭐ App 소개
 
@@ -27,3 +27,25 @@ privacy_url: /apps/triangle-hopscotch/privacy
 ## 🧑‍💻 개발자 소개
 
 {% include shared-developer.md %}
+
+# 🇺🇸 Solid Triangle Territory
+
+## ⭐ About the App
+
+- This game was created by the developer for the developer’s own family to enjoy.
+    - It was inspired by memories of playing it with friends back in school.
+    - It was also made so the developer’s two children could enjoy it during their spare time.
+- To help prevent excessive gameplay by children, a play time limit was added.
+- After getting tired of excessive ads in other games, we decided to build our own.
+
+## 📥 Download the App
+
+- iOS: [Download on the App Store](https://apps.apple.com/app/id6759189170)
+- Android:
+    - [Download on ONE store](https://m.onestore.co.kr/v2/app/0001004534)
+
+## 🔏 Privacy Policy
+
+["Solid Triangle Territory" Privacy Policy](/apps/triangle-hopscotch/privacy)
+
+## 🧑‍💻 About the Developer

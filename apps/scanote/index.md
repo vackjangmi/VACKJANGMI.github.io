@@ -4,7 +4,7 @@ title: 쓸만한 스캔노트
 privacy_url: /apps/scanote/privacy
 ---
 
-# 쓸만한 스캔노트
+# 🇰🇷 쓸만한 스캔노트
 
 ## ⭐ App 소개
 
@@ -26,5 +26,29 @@ privacy_url: /apps/scanote/privacy
 ["쓸만한 스캔노트" 개인정보처리방침](/apps/scanote/privacy)
 
 ## 🧑‍💻 개발자 소개
+
+{% include shared-developer.md %}
+
+# 🇺🇸 Solid Scanote
+
+## ⭐ About the App
+
+- This is a simple document scanning app.
+    - It was created because carrying many workbooks for a child’s homework was inconvenient.
+    - After capturing pages as documents, a note feature was added so users can write on the scanned documents and solve problems directly.
+- Tired of excessive ads and paid plans, we decided to build our own app.
+    - The app includes only one banner ad at the bottom.
+
+## 📥 Download the App
+
+- iOS: [Download on the App Store](https://apps.apple.com/app/id6759282130)
+- Android:
+    - [Download on ONE store](https://m.onestore.co.kr/v2/app/0001004671)
+
+## 🔏 Privacy Policy
+
+["Solid Scanote" Privacy Policy](/apps/scanote/privacy)
+
+## 🧑‍💻 About the Developer
 
 {% include shared-developer.md %}
