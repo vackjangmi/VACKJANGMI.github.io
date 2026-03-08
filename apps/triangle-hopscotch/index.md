@@ -49,3 +49,5 @@ privacy_url: /apps/triangle-hopscotch/privacy
 ["Solid Triangle Territory" Privacy Policy](/apps/triangle-hopscotch/privacy)
 
 ## 🧑‍💻 About the Developer
+
+{% include shared-developer.md %}

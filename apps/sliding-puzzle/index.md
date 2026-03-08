@@ -1,27 +1,26 @@
 ---
 layout: app
-title: 할만한 메모리 게임
-privacy_url: /apps/memorygame/privacy
+title: 할만한 슬라이딩 퍼즐
+privacy_url: /apps/sliding-puzzle/privacy
 ---
 
-# 🇰🇷 할만한 메모리 게임
+# 🇰🇷 할만한 슬라이딩 퍼즐
 
 ## ⭐ App 소개
 
 - 이 게임은 개발자와 개발자의 가족이 직접 하기 위해서 만들었습니다.
-    - 플레이어 만의 카드를 만들어서 메모리 게임을 하면 색다르고 재밌을 것 같아서 만들었습니다.
-    - 개발자의 자녀 둘이 자투리 시간에 즐기기 위해 개발을 했습니다.
+    - 숫자로 플레이를 하거나, 플레이어 만의 퍼즐을 만들어서 게임을 하면 색다르고 재밌을 것 같아서 만들었습니다.
+    - 개발자가 출근을 할 때 하고 싶어서 만들었습니다.
 - 자녀의 무분별한 게임을 제한하고자, 플레이 타임의 제한이 생겼습니다.
-- 과도한 광고에 지쳐서 직접 만들게 됐습니다.
 
 ## 📥 앱 다운로드
 
-- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6759896288)
+- iOS: [App Store에서 다운로드 준비중]
 - Android:
-    - [원스토어에서 다운로드](https://m.onestore.co.kr/v2/app/0001004657)
+    - [원스토어에서 다운로드 준비중]
 
 ## 📘 약관 및 정책
-- 아래 내용은 **할만한 메모리 게임** 이용 시 적용되는 기본 정책입니다.
+- 아래 내용은 **할만한 슬라이딩 퍼즐** 이용 시 적용되는 기본 정책입니다.
 
 ### 1) 서비스 이용 안내
 - 본 앱은 사용자가 선택한 사진/영상 미디어를 **기기 내에서 처리**합니다.
@@ -42,30 +41,29 @@ privacy_url: /apps/memorygame/privacy
 
 ## 🔏 개인정보 처리 방침
 
-["할만한 메모리 게임" 개인정보처리방침](/apps/memorygame/privacy)
+["할만한 슬라이딩 퍼즐" 개인정보처리방침](/apps/sliding-puzzle/privacy)
 
 ## 🧑‍💻 개발자 소개
 
 {% include shared-developer.md %}
 
-# 🇺🇸 Solid Memory Game
+# 🇺🇸 Solid Sliding Puzzle
 
 ## ⭐ About the App
 
-- This game was created by a developer for the developer’s own family to enjoy.
-    - We thought it would be fun and unique to play a memory game using custom cards made by each player.
-    - It was also developed so the developer’s two children could enjoy it during short breaks.
-- To prevent excessive game use by children, play time is limited.
-- Tired of apps overloaded with ads, we decided to build our own.
+- This game was created by the developer and the developer’s family for their own enjoyment.  
+    - It was made with the idea that it would be fun and refreshing to play either with numbers or with custom puzzles made by the layer.  
+    - The developer also made it as a game to enjoy during the commute.  
+- To help limit children’s excessive game time, a play time limit was added.  
 
 ## 📥 Download the App
 
-- iOS: [Download on the App Store](https://apps.apple.com/app/id6759896288)
+- iOS: [Download on the App Store]
 - Android:
-    - [Download on the ONE store](https://m.onestore.co.kr/v2/app/0001004657)
+    - [Download on the ONE store]
 
 ## 📘 Terms & Policies
-- The following policies apply when using **Solid Memory Game**.
+- The following policies apply when using **Solid Sliding Puzzle**.
 
 ### 1) Service Usage Information
 - This app processes the photos and video media selected by the user **locally on the device**.
@@ -84,9 +82,10 @@ privacy_url: /apps/memorygame/privacy
 ### 4) Policy Changes
 - These policies may be updated when necessary, and any changes will be announced on this page.
 
+
 ## 🔏 Privacy Policy
 
-[“Solid Memory Game” Privacy Policy](/apps/memorygame/privacy)
+[“Solid Sliding Puzzle Privacy Policy](/apps/sliding-puzzle/privacy)
 
 ## 🧑‍💻 About the Developer
 
