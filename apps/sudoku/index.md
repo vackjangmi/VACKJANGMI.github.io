@@ -16,9 +16,9 @@ privacy_url: /apps/sudoku/privacy
 
 ## 📥 앱 다운로드
 
-- iOS: [App Store에서 다운로드](https://apps.apple.com/app/0001004657
+- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6759184547)
 - Android:
-    - [원스토어에서 다운로드]((https://m.onestore.co.kr/v2/app/0001004533))
+    - [원스토어에서 다운로드](https://m.onestore.co.kr/v2/app/0001004533)
 
 
 ## 🔏 개인 정보 처리 방침
@@ -42,7 +42,7 @@ privacy_url: /apps/sudoku/privacy
 
 ## 📥 Download the App
 
-- iOS: [Download on the App Store](https://apps.apple.com/app/0001004657)
+- iOS: [Download on the App Store](https://apps.apple.com/app/id6759184547)
 - Android:
     - [Download on the ONE store](https://m.onestore.co.kr/v2/app/0001004533)
 
