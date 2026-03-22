@@ -15,7 +15,7 @@ privacy_url: /apps/sliding-puzzle/privacy
 
 ## 📥 앱 다운로드
 
-- iOS: [App Store에서 다운로드(https://apps.apple.com/app/id6760256107)
+- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6760256107)
 - Android:
     - [원스토어에서 다운로드 준비중]
 
