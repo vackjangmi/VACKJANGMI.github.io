@@ -43,4 +43,12 @@ permalink: /
       <div class="app-sub">앱 설명 페이지</div>
     </div>
   </a>
+
+  <a class="app-card" href="{{ '/apps/reflex-game/' | relative_url }}">
+    <img class="app-icon" src="{{ '/assets/icons/reflex-game-icon.png' | relative_url }}" alt="할만한 순발력 게임 아이콘" width="44" height="44" />
+    <div class="app-meta">
+      <div class="app-title">할만한 순발력 게임</div>
+      <div class="app-sub">앱 설명 페이지</div>
+    </div>
+  </a>
 </div>
