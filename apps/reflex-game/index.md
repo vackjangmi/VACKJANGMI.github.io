@@ -17,7 +17,7 @@ privacy_url: /apps/reflex-game/privacy
 
 ## 📥 앱 다운로드
 
-- iOS: 출시 정보 준비 중
+- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6763530343)
 - Android: 출시 정보 준비 중
 
 ## 📘 약관 및 정책
@@ -61,7 +61,7 @@ privacy_url: /apps/reflex-game/privacy
 
 ## 📥 Download the App
 
-- iOS: Release information coming soon
+- iOS: [Download on the App Store](https://apps.apple.com/app/id6763530343)
 - Android: Release information coming soon
 
 ## 📘 Terms & Policies
