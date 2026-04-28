@@ -11,6 +11,8 @@ app_url: /apps/tabgroup-browswer/
 
 본 문서는 앱이 어떤 정보를 기기 내부에 저장할 수 있는지, 그 목적이 무엇인지, 그리고 외부 웹사이트 및 외부 앱 링크 처리 시 어떤 점을 알아두셔야 하는지를 설명합니다.
 
+또한 앱에는 **광고 기능**이 포함될 수 있으며, 본 문서에는 광고 표시와 관련된 정보 처리 방식도 함께 설명합니다.
+
 ---
 
 ### 1. 앱이 저장·처리하는 정보
@@ -23,13 +25,14 @@ app_url: /apps/tabgroup-browswer/
 - 앱 설정값
 - 세션 복원 및 탭 그룹 전환을 위한 쿠키 정보 또는 쿠키 스냅샷
 - 자동 백업 파일 및 복원에 필요한 로컬 데이터
+- 비공개 탭 그룹 설정값 및 탭 그룹 목록 숨김 상태
 
 또한 이용자 동작에 따라 다음과 같은 파일이 생성될 수 있습니다.
 
 - 암호화된 탭 그룹 백업 파일 (`.tbg`)
 - 암호화된 전체 백업 파일 (`.tbbak`)
 
-앱은 위 정보를 앱 기능 제공을 위해 기기 내부에 저장할 수 있으나, **앱 개발자가 운영하는 별도 서버로 회원정보나 브라우징 데이터를 수집하는 구조를 기본으로 하지 않습니다.**
+현재 확인된 범위에서는, 회원정보나 브라우징 데이터를 개발자 운영 서버로 보내는 앱의 핵심 기능은 확인되지 않았습니다. 다만 광고 SDK 등 제3자 구성요소는 각자의 정책에 따라 정보를 처리할 수 있습니다.
 
 ---
 
@@ -42,8 +45,11 @@ app_url: /apps/tabgroup-browswer/
 - 방문 기록 및 자동완성 제공
 - 앱 설정 저장
 - 탭 그룹 백업/복원 및 전체 백업/복원
+- 탭 그룹 목록 표시, 순서 변경, 기본 탭 그룹 선택
+- 비공개 탭 그룹 숨김 및 재진입 제어
 - 외부 앱 링크 처리 및 관련 제어 기능 제공
 - 쿠키, 웹 저장소, 캐시 등 브라우저 데이터 관리
+- 앱 열기 광고 로드 및 표시
 
 ---
 
@@ -53,7 +59,8 @@ app_url: /apps/tabgroup-browswer/
 
 - 앱은 브라우징 관련 데이터를 주로 로컬 저장소에 보관합니다.
 - 생성된 백업 파일은 이용자가 저장 또는 내보내기한 위치에 따라 기기 내부 또는 이용자가 선택한 저장 위치에 보관될 수 있습니다.
-- 앱 자체 서버에 해당 데이터를 업로드하거나 개발자가 이를 열람하는 구조를 기본 기능으로 제공하지 않습니다.
+- 현재 확인된 범위에서는, 이러한 데이터를 개발자 운영 서버에 업로드해 저장하거나 열람하는 기본 기능은 확인되지 않았습니다.
+- 비공개 탭 그룹 여부, 탭 그룹 순서, 기본 탭 그룹 같은 설정값도 기기 내부에 저장될 수 있습니다.
 
 ---
 
@@ -81,21 +88,35 @@ app_url: /apps/tabgroup-browswer/
 
 ---
 
-### 6. 제3자 제공
+### 6. 광고 및 제3자 SDK
 
-앱 개발자가 운영하는 별도 서버로 이용자의 브라우징 데이터, 세션 데이터, 탭 그룹 데이터 등을 **제3자에게 제공하는 구조는 기본적으로 없습니다.**
+앱은 앱 시작, 백그라운드 복귀, 탭 그룹 전환과 같은 일부 시점에 **앱 열기 광고(App Open Ad)** 를 표시할 수 있습니다.
+
+- 광고 기능 제공을 위해 Google AdMob 등 제3자 광고 SDK가 사용될 수 있습니다.
+- 광고 SDK는 광고 로드 및 표시 과정에서 기기 정보, 광고 식별자, IP 주소, 앱 사용 시점 정보 등 자체 정책상 필요한 정보를 처리할 수 있습니다.
+- 현재 확인된 범위에서는, 앱이 이용자의 탭 그룹 코드, 열려 있는 탭 목록, 방문 URL, 비공개 탭 그룹 여부를 개발자 운영 서버로 보내 광고 맞춤화에 사용하는 동작은 확인되지 않았습니다.
+- 광고 관련 정보 처리는 해당 SDK 또는 광고 제공자의 정책에 따를 수 있습니다.
+
+광고 SDK의 정보 처리 방식에 대해서는 해당 제공자의 개인정보처리방침 또는 정책도 함께 확인해 주세요.
+
+---
+
+### 7. 제3자 제공
+
+현재 확인된 범위에서는, 이용자의 브라우징 데이터, 세션 데이터, 탭 그룹 데이터 등을 개발자 운영 서버를 통해 제3자에게 제공하는 기본 구조는 확인되지 않았습니다.
 
 다만 다음 경우에는 정보가 외부 서비스로 전달될 수 있습니다.
 
 - 이용자가 직접 웹사이트에 접속하는 경우
 - 이용자가 외부 앱 링크를 실행하는 경우
+- 광고 SDK가 광고 표시를 위해 자체적으로 필요한 정보를 처리하는 경우
 - 이용자가 백업 파일을 외부 서비스 또는 외부 저장 위치로 직접 이동·공유하는 경우
 
 이 경우 해당 정보 처리는 이용자가 선택한 웹사이트, 앱, 저장 서비스의 정책에 따릅니다.
 
 ---
 
-### 7. 삭제 및 이용자 통제 방법
+### 8. 삭제 및 이용자 통제 방법
 
 이용자는 앱 내 기능을 통해 저장된 데이터를 직접 관리하거나 삭제할 수 있습니다.
 
@@ -106,13 +127,16 @@ app_url: /apps/tabgroup-browswer/
 - 전체 캐시 삭제
 - 전체 데이터 삭제
 - 탭 그룹 삭제
+- 비공개 탭 그룹 설정 해제
 - 백업 파일 직접 삭제
 
 백업 파일이 앱 외부 저장소에 저장된 경우에는, 해당 파일을 저장한 위치에서 이용자가 직접 삭제해야 할 수 있습니다.
 
+비공개 탭 그룹은 탭 그룹 목록에서 숨겨질 수 있으나, 해당 탭 그룹 자체가 자동으로 삭제되는 것은 아닙니다.
+
 ---
 
-### 8. 보안
+### 9. 보안
 
 앱은 로컬 저장 데이터 및 백업 파일 보호를 위해 보안 기능을 적용할 수 있습니다.
 
@@ -123,7 +147,7 @@ app_url: /apps/tabgroup-browswer/
 
 ---
 
-### 9. 문의처
+### 10. 문의처
 
 개인정보처리방침 또는 데이터 처리 방식에 관한 문의는 아래로 연락해 주세요.
 
@@ -137,6 +161,8 @@ Solid TabGroup Browser (the "App") is not primarily a server-side account or mem
 
 This policy explains what information the App may store locally on the device, why it is used, and what users should understand when opening third-party websites or external app links.
 
+The App may also include **advertising features**, and this policy explains the related data handling at a practical level.
+
 ---
 
 ### 1. Information Stored and Processed by the App
@@ -149,13 +175,14 @@ The App may **primarily store the following information on the user’s device**
 - app settings and preferences
 - cookie information or cookie snapshots used for session restore and tab-group switching
 - automatic backup files and related local restore data
+- private tab-group settings and hidden tab-group list state
 
 Depending on user actions, the following files may also be created:
 
 - encrypted tab-group backup files (`.tbg`)
 - encrypted full-backup files (`.tbbak`)
 
-The App may store this information locally to provide its features, but it **is not designed as a service that primarily collects member information or browsing data to servers operated by the developer.**
+We have not identified a core App feature that sends member information or browsing data to a developer-operated server. Third-party components such as advertising SDKs may still handle information under their own policies.
 
 ---
 
@@ -168,8 +195,11 @@ The App uses locally stored information for the following purposes:
 - providing history and autocomplete
 - saving app settings
 - backing up and restoring tab groups or full app data
+- showing tab groups in a list, reordering them, and selecting a default tab group
+- hiding private tab groups and allowing re-entry by code
 - handling and controlling external app links
 - managing browser data such as cookies, web storage, and cache
+- loading and showing app open ads
 
 ---
 
@@ -179,7 +209,8 @@ The above information is generally stored in the **local storage of the user’s
 
 - The App primarily keeps browsing-related data in on-device local storage.
 - Generated backup files may be stored on the device or in another location selected by the user when saving or exporting them.
-- The App does not provide a default feature that uploads this data to the developer’s own servers for storage or review.
+- We have not identified a default App feature that uploads this data to developer-operated servers for storage or review.
+- Settings such as whether a tab group is private, tab-group order, and the default tab group may also be stored on the device.
 
 ---
 
@@ -207,21 +238,35 @@ Accordingly, this Privacy Policy applies to **the App’s own data handling prac
 
 ---
 
-### 6. Sharing with Third Parties
+### 6. Advertising and Third-Party SDKs
 
-The App does **not** have a default structure in which the developer provides users’ browsing data, session data, or tab-group data to third parties through a separate developer-operated server.
+The App may show **App Open Ads** at certain moments, such as app launch, foreground return, or tab-group switching.
+
+- The App may use third-party advertising SDKs such as Google AdMob to provide these ads.
+- During ad loading and display, the advertising SDK may process information such as device information, advertising identifiers, IP address, or app usage timing according to its own policies.
+- We have not identified app behavior that sends users’ tab-group codes, open-tab lists, visited URLs, or private-tab-group status to a developer-operated server for ad personalization.
+- Advertising-related information processing may therefore also be subject to the policies of the SDK or ad provider.
+
+Please also review the privacy policy or related policy of the relevant advertising provider for details about how the ad SDK handles data.
+
+---
+
+### 7. Sharing with Third Parties
+
+We have not identified a default App structure that provides users’ browsing data, session data, or tab-group data to third parties through a developer-operated server.
 
 However, information may reach external services in the following cases:
 
 - when the user directly opens a website
 - when the user launches an external app link
+- when an advertising SDK processes the information it needs to load or display ads
 - when the user manually moves or shares backup files to external services or storage locations
 
 In those cases, the relevant information is handled according to the policies of the website, app, or storage service chosen by the user.
 
 ---
 
-### 7. Deletion and User Controls
+### 8. Deletion and User Controls
 
 Users may directly manage or delete stored data through features provided in the App.
 
@@ -232,13 +277,16 @@ Examples of available controls may include:
 - deleting all cache
 - deleting all data
 - deleting a tab group
+- turning off the private tab-group setting
 - deleting backup files directly
 
 If backup files are stored outside the App’s own local storage area, the user may need to delete those files manually from the location where they were saved.
 
+Private tab groups may be hidden from the chooser list, but they are not automatically deleted just because they are hidden.
+
 ---
 
-### 8. Security
+### 9. Security
 
 The App may apply security measures to protect locally stored data and backup files.
 
@@ -249,7 +297,7 @@ However, the actual level of protection may vary depending on the security state
 
 ---
 
-### 9. Contact
+### 10. Contact
 
 If you have questions about this Privacy Policy or the App’s data handling practices, please contact:
 
