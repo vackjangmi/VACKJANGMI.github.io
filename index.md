@@ -51,4 +51,12 @@ permalink: /
       <div class="app-sub">앱 설명 페이지</div>
     </div>
   </a>
+
+  <a class="app-card" href="{{ '/apps/tabgroup-browswer/' | relative_url }}">
+    <img class="app-icon" src="{{ '/assets/icons/tabgroup-browswer-icon.jpg' | relative_url }}" alt="쓸만한 탭그룹 브라우저 아이콘" width="44" height="44" />
+    <div class="app-meta">
+      <div class="app-title">쓸만한 탭그룹 브라우저</div>
+      <div class="app-sub">앱 설명 페이지</div>
+    </div>
+  </a>
 </div>

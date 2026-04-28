@@ -9,15 +9,17 @@ privacy_url: /apps/tabgroup-browswer/privacy
 ## ⭐ App 소개
 
 - 이 앱은 일반적인 홈페이지 중심 브라우저보다는, **숫자 코드로 구분되는 탭 그룹**을 열고 관리하는 방식에 초점을 맞춘 브라우저입니다.
-- 사용자는 탭 그룹 코드를 입력해 해당 브라우징 세션에 들어가고, 그 안에서 여러 탭과 방문 기록을 함께 관리할 수 있습니다.
+- 사용자는 탭 그룹 목록에서 원하는 그룹을 선택하거나, 새 탭 그룹 코드를 입력해 해당 브라우징 세션으로 들어갈 수 있습니다.
+- 일부 탭 그룹은 **비공개 탭 그룹**으로 설정해 목록에서 숨길 수 있습니다. 이는 목록에서 감추는 기능이며, 탭 그룹이 자동으로 삭제되거나 별도의 시크릿 브라우징 모드가 되는 것은 아닙니다. 다시 열려면 해당 탭 그룹 코드를 알고 있어야 합니다.
 - 주소 또는 검색어 입력, 방문 기록 기반 자동완성, 뒤로 가기/앞으로 가기/새로고침 같은 기본 브라우징 기능을 지원합니다.
 - 현재 탭 그룹을 기본 그룹으로 지정하거나, 다른 코드로 복제하거나, 탭 그룹 자체를 삭제하는 관리 기능도 제공합니다.
 - 탭 그룹 단위 내보내기/복원과 전체 백업/복원을 지원하며, 백업 데이터는 암호화해서 다룰 수 있도록 설계되었습니다.
 - 현재 사이트의 쿠키/웹 저장소 삭제, 전체 쿠키/캐시/데이터 정리, 외부 앱 링크 차단 같은 제어 기능도 함께 제공합니다.
+- 앱 시작, 백그라운드 복귀, 탭 그룹 전환 시점에 앱 열기 광고가 표시될 수 있습니다.
 
 ## 📥 앱 다운로드
 
-- iOS: 출시 정보 준비 중
+- iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6763546370)
 - Android: 출시 정보 준비 중
 
 ## 📘 약관 및 정책
@@ -25,7 +27,8 @@ privacy_url: /apps/tabgroup-browswer/privacy
 
 ### 1) 서비스 이용 안내
 - 본 앱은 탭 그룹, 방문 기록, 설정, 브라우저 데이터와 같은 정보를 **기기 내에서 관리**하는 브라우저 앱입니다.
-- 탭 그룹 백업/복원, 암호화된 내보내기/가져오기, 외부 앱 링크 열기 등의 기능은 사용자의 기기 환경과 선택한 외부 앱 정책의 영향을 받을 수 있습니다.
+- 탭 그룹 백업/복원, 암호화된 내보내기/가져오기, 비공개 탭 그룹 숨김, 외부 앱 링크 열기 등의 기능은 사용자의 기기 환경과 선택한 외부 앱 정책의 영향을 받을 수 있습니다.
+- 앱 열기 광고는 앱 시작, 백그라운드 복귀, 탭 그룹 전환 같은 일부 시점에 표시될 수 있습니다.
 
 ### 2) 콘텐츠 이용 및 책임
 - 사용자가 본 앱을 통해 방문하거나 저장하거나 외부 앱으로 여는 웹 콘텐츠에 대한 책임은 해당 사용자에게 있습니다.
@@ -53,15 +56,17 @@ privacy_url: /apps/tabgroup-browswer/privacy
 ## ⭐ About the App
 
 - This app is a browser built around **tab groups identified by numeric codes**, rather than a typical homepage-first browsing flow.
-- Users enter a tab group code to open a browsing session, then manage multiple tabs and history within that group.
+- Users can choose a tab group from the list or enter a new tab group code to open a browsing session, then manage multiple tabs and history within that group.
+- Some tab groups can be marked as **private tab groups** so they are hidden from the chooser list. This is a hiding feature only; it does not automatically delete the tab group or turn it into a separate incognito-browsing mode. To reopen one, the user needs to know its tab-group code.
 - It supports core browsing features such as address or search input, history-based autocomplete, back/forward navigation, and reload.
 - Users can set the current tab group as the default, duplicate it to another code, or delete the tab group when needed.
 - The app also supports tab-group export/restore and full backup/restore, with encrypted handling for backup data.
 - Additional control features include deleting current-site cookies and web storage, clearing all cookies/cache/data, and blocking external app links.
+- App open ads may appear when the app starts, returns from the background, or switches tab groups.
 
 ## 📥 Download the App
 
-- iOS: Release information coming soon
+- iOS: [Download on the App Store](https://apps.apple.com/app/id6763546370)
 - Android: Release information coming soon
 
 ## 📘 Terms & Policies
@@ -69,7 +74,8 @@ privacy_url: /apps/tabgroup-browswer/privacy
 
 ### 1) Service Usage Information
 - This app is a browser that manages information such as tab groups, browsing history, settings, and browser data **on the device**.
-- Features such as tab-group backup and restore, encrypted export/import, and opening external app links may be affected by the user’s device environment and the policies of any selected external apps.
+- Features such as tab-group backup and restore, encrypted export/import, hiding private tab groups, and opening external app links may be affected by the user’s device environment and the policies of any selected external apps.
+- App open ads may appear at certain moments, such as app launch, foreground return, or tab-group switching.
 
 ### 2) Content Use and Responsibility
 - Users are responsible for the web content they access, save, or open in external apps through this browser.
