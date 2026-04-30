@@ -122,8 +122,8 @@ layout: none
       if (q === "en" || q === "en-us" || q === "en-gb") return "en";
       if (q === "ko" || q === "ko-kr") return "ko";
 
-      const navLang = (navigator.language || navigator.userLanguage || "ko").toLowerCase();
-      return navLang.startsWith("en") ? "en" : "ko";
+      const navLang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+      return navLang.startsWith("ko") ? "ko" : "en";
     }
 
     // ✅ i18n 텍스트
