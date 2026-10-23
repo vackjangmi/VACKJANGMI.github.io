@@ -17,8 +17,7 @@ privacy_url: /apps/memorygame/privacy
 ## 📥 앱 다운로드
 
 - iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6759896288)
-- Android:
-    - [원스토어에서 다운로드](https://m.onestore.co.kr/v2/app/0001004657)
+- Android: [Google Play에서 다운로드](https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.memorygame)
 
 ## 📘 약관 및 정책
 - 아래 내용은 **할만한 메모리 게임** 이용 시 적용되는 기본 정책입니다.
@@ -61,8 +60,7 @@ privacy_url: /apps/memorygame/privacy
 ## 📥 Download the App
 
 - iOS: [Download on the App Store](https://apps.apple.com/app/id6759896288)
-- Android:
-    - [Download on the ONE store](https://m.onestore.co.kr/v2/app/0001004657)
+- Android: [Download on Google Play](https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.memorygame)
 
 ## 📘 Terms & Policies
 - The following policies apply when using **Solid Memory Game**.

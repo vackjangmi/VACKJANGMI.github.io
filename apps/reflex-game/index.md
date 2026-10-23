@@ -18,7 +18,7 @@ privacy_url: /apps/reflex-game/privacy
 ## 📥 앱 다운로드
 
 - iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6763530343)
-- Android: 출시 정보 준비 중
+- Android: [Google Play에서 다운로드](https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.reflexgame)
 
 ## 📘 약관 및 정책
 - 아래 내용은 **할만한 순발력 게임** 이용 시 적용되는 기본 정책입니다.
@@ -62,7 +62,7 @@ privacy_url: /apps/reflex-game/privacy
 ## 📥 Download the App
 
 - iOS: [Download on the App Store](https://apps.apple.com/app/id6763530343)
-- Android: Release information coming soon
+- Android: [Download on Google Play](https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.reflexgame)
 
 ## 📘 Terms & Policies
 - The following policies apply when using **Solid Reflex Game**.

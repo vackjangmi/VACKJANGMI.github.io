@@ -17,8 +17,7 @@ privacy_url: /apps/scanote/privacy
 ## 📥 앱 다운로드
 
 - iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6759282130)
-- Android:
-    - [원스토어에서 다운로드](https://m.onestore.co.kr/v2/app/0001004671)
+- Android: [Google Play에서 다운로드](https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.scanote)
 
 
 ## 🔏 개인정보 처리 방침
@@ -42,8 +41,7 @@ privacy_url: /apps/scanote/privacy
 ## 📥 Download the App
 
 - iOS: [Download on the App Store](https://apps.apple.com/app/id6759282130)
-- Android:
-    - [Download on ONE store](https://m.onestore.co.kr/v2/app/0001004671)
+- Android: [Download on Google Play](https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.scanote)
 
 ## 🔏 Privacy Policy
 

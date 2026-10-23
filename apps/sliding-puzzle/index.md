@@ -16,8 +16,7 @@ privacy_url: /apps/sliding-puzzle/privacy
 ## 📥 앱 다운로드
 
 - iOS: [App Store에서 다운로드](https://apps.apple.com/app/id6760256107)
-- Android:
-    - [원스토어에서 다운로드 준비중]
+- Android: [Google Play에서 다운로드](https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.slidingpuzzle)
 
 ## 📘 약관 및 정책
 - 아래 내용은 **할만한 슬라이딩 퍼즐** 이용 시 적용되는 기본 정책입니다.
@@ -59,8 +58,7 @@ privacy_url: /apps/sliding-puzzle/privacy
 ## 📥 Download the App
 
 - iOS: [Download on the App Store](https://apps.apple.com/app/id6760256107)
-- Android:
-    - [Download on the ONE store]
+- Android: [Download on Google Play](https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.slidingpuzzle)
 
 ## 📘 Terms & Policies
 - The following policies apply when using **Solid Sliding Puzzle**.

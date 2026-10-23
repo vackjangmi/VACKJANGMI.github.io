@@ -97,13 +97,13 @@ layout: none
 
   <script>
     const ALL_APPS = [
-      { key:"sudoku", title:"할만한 스도쿠", webHref:"/apps/sudoku/", icon:"/assets/icons/sudoku-icon.png", alt:"할만한 스도쿠 아이콘", iosHref:"https://apps.apple.com/app/id6759184547" },
-      { key:"triangle-hopscotch", title:"할만한 세모 땅따먹기", webHref:"/apps/triangle-hopscotch/", icon:"/assets/icons/triangle-hopscotch-icon.png", alt:"할만한 세모 땅따먹기 아이콘", iosHref:"https://apps.apple.com/app/id6759189170" },
-      { key:"memorygame", title:"할만한 메모리 게임", webHref:"/apps/memorygame/", icon:"/assets/icons/memorygame-icon.png", alt:"할만한 메모리 게임 아이콘", iosHref:"https://apps.apple.com/app/id6759896288" },
-      { key:"reflex-game", title:"할만한 순발력 게임", webHref:"/apps/reflex-game/", icon:"/assets/icons/reflex-game-icon.png", alt:"할만한 순발력 게임 아이콘", iosHref:"https://apps.apple.com/app/id6763530343" },
-      { key:"sliding-puzzle", title:"할만한 슬라이딩 퍼즐", webHref:"/apps/sliding-puzzle/", icon:"/assets/icons/sliding-puzzle-icon.png", alt:"할만한 슬라이딩 퍼즐 아이콘", iosHref:"https://apps.apple.com/app/id6760256107" },
-      { key:"scanote", title:"쓸만한 스캔노트", webHref:"/apps/scanote/", icon:"/assets/icons/scanote-icon.png", alt:"쓸만한 스캔노트 아이콘", iosHref:"https://apps.apple.com/app/id6759282130" },
-      { key:"tabgroup-browswer", title:"쓸만한 탭그룹 브라우저", webHref:"/apps/tabgroup-browswer/", icon:"/assets/icons/tabgroup-browswer-icon.jpg", alt:"쓸만한 탭그룹 브라우저 아이콘", iosHref:"https://apps.apple.com/app/id6763546370" },
+      { key:"sudoku", title:"할만한 스도쿠", webHref:"/apps/sudoku/", icon:"/assets/icons/sudoku-icon.png", alt:"할만한 스도쿠 아이콘", iosHref:"https://apps.apple.com/app/id6759184547", androidHref:"https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.solidsudoku" },
+      { key:"triangle-hopscotch", title:"할만한 세모 땅따먹기", webHref:"/apps/triangle-hopscotch/", icon:"/assets/icons/triangle-hopscotch-icon.png", alt:"할만한 세모 땅따먹기 아이콘", iosHref:"https://apps.apple.com/app/id6759189170", androidHref:"https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.trianglehopscotch" },
+      { key:"memorygame", title:"할만한 메모리 게임", webHref:"/apps/memorygame/", icon:"/assets/icons/memorygame-icon.png", alt:"할만한 메모리 게임 아이콘", iosHref:"https://apps.apple.com/app/id6759896288", androidHref:"https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.memorygame" },
+      { key:"reflex-game", title:"할만한 순발력 게임", webHref:"/apps/reflex-game/", icon:"/assets/icons/reflex-game-icon.png", alt:"할만한 순발력 게임 아이콘", iosHref:"https://apps.apple.com/app/id6763530343", androidHref:"https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.reflexgame" },
+      { key:"sliding-puzzle", title:"할만한 슬라이딩 퍼즐", webHref:"/apps/sliding-puzzle/", icon:"/assets/icons/sliding-puzzle-icon.png", alt:"할만한 슬라이딩 퍼즐 아이콘", iosHref:"https://apps.apple.com/app/id6760256107", androidHref:"https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.slidingpuzzle" },
+      { key:"scanote", title:"쓸만한 스캔노트", webHref:"/apps/scanote/", icon:"/assets/icons/scanote-icon.png", alt:"쓸만한 스캔노트 아이콘", iosHref:"https://apps.apple.com/app/id6759282130", androidHref:"https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.scanote" },
+      { key:"tabgroup-browswer", title:"쓸만한 탭그룹 브라우저", webHref:"/apps/tabgroup-browswer/", icon:"/assets/icons/tabgroup-browswer-icon.jpg", alt:"쓸만한 탭그룹 브라우저 아이콘", iosHref:"https://apps.apple.com/app/id6763546370", androidHref:"https://play.google.com/store/apps/details?id=xyz.sooyeol.apps.tabgroup.browser" },
     ];
 
     const ORIGIN = window.location.origin;
@@ -113,6 +113,10 @@ layout: none
       const iOS = /iPad|iPhone|iPod/.test(ua);
       const iPadOS13Plus = (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
       return iOS || iPadOS13Plus;
+    }
+
+    function isAndroid(){
+      return /Android/i.test(navigator.userAgent || "");
     }
 
     // ✅ 언어 결정: ?lang=en 우선, 없으면 브라우저 언어로 판단
@@ -181,7 +185,11 @@ layout: none
     }
 
     function fillCard(cardEl, app){
-      const href = isIOS() ? app.iosHref : (ORIGIN + app.webHref);
+      const href = isIOS()
+        ? app.iosHref
+        : isAndroid()
+          ? app.androidHref
+          : (ORIGIN + app.webHref);
       cardEl.href = href;
 
       const iconEl  = cardEl.querySelector('[data-role="icon"]');
