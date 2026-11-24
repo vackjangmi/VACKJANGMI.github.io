@@ -11,7 +11,7 @@ app_url: /apps/tabgroup-browswer/
 
 본 문서는 앱이 어떤 정보를 기기 내부에 저장할 수 있는지, 그 목적이 무엇인지, 그리고 외부 웹사이트 및 외부 앱 링크 처리 시 어떤 점을 알아두셔야 하는지를 설명합니다.
 
-또한 앱에는 **광고 기능**이 포함될 수 있으며, 본 문서에는 광고 표시와 관련된 정보 처리 방식도 함께 설명합니다.
+앱은 **Google AdMob 광고와 Google Analytics for Firebase 이용 통계**를 사용합니다. 아래 내용은 Android 및 iOS 앱 1.0.12부터 추가되는 이용 통계를 포함합니다. 최종 수정일: 2026년 11월 24일.
 
 ---
 
@@ -49,7 +49,8 @@ app_url: /apps/tabgroup-browswer/
 - 비공개 탭 그룹 숨김 및 재진입 제어
 - 외부 앱 링크 처리 및 관련 제어 기능 제공
 - 쿠키, 웹 저장소, 캐시 등 브라우저 데이터 관리
-- 앱 열기 광고 로드 및 표시
+- 배너 광고 로드 및 표시
+- 앱 이용 통계 분석 및 기능 개선
 
 ---
 
@@ -88,16 +89,24 @@ app_url: /apps/tabgroup-browswer/
 
 ---
 
-### 6. 광고 및 제3자 SDK
+### 6. 광고, 이용 통계 및 제3자 SDK
 
-앱은 앱 시작, 백그라운드 복귀, 탭 그룹 전환과 같은 일부 시점에 **앱 열기 광고(App Open Ad)** 를 표시할 수 있습니다.
+**Google AdMob**은 배너 광고를 제공합니다. 광고 SDK는 광고 제공, 광고 성과 분석, 오류 진단 및 부정 사용 방지를 위해 IP 주소 및 그로부터 추정한 대략적인 위치, 기기·광고 식별자, 앱 및 광고와의 상호작용, 오류·성능 정보를 수집·공유할 수 있습니다. 광고 식별자의 이용 가능 여부는 운영체제의 권한과 이용자 설정에 따릅니다.
 
-- 광고 기능 제공을 위해 Google AdMob 등 제3자 광고 SDK가 사용될 수 있습니다.
-- 광고 SDK는 광고 로드 및 표시 과정에서 기기 정보, 광고 식별자, IP 주소, 앱 사용 시점 정보 등 자체 정책상 필요한 정보를 처리할 수 있습니다.
-- 현재 확인된 범위에서는, 앱이 이용자의 탭 그룹 코드, 열려 있는 탭 목록, 방문 URL, 비공개 탭 그룹 여부를 개발자 운영 서버로 보내 광고 맞춤화에 사용하는 동작은 확인되지 않았습니다.
-- 광고 관련 정보 처리는 해당 SDK 또는 광고 제공자의 정책에 따를 수 있습니다.
+**Google Analytics for Firebase**는 앱 실행, 세션 및 이용 시간과 같은 자동 이용 통계와, 탭·탭 그룹을 새로 만드는 동작의 횟수를 수집하여 앱 이용 현황을 분석하고 기능을 개선하는 데 사용됩니다.
 
-광고 SDK의 정보 처리 방식에 대해서는 해당 제공자의 개인정보처리방침 또는 정책도 함께 확인해 주세요.
+- 통계에는 앱 설치 인스턴스 식별자, 앱 버전, 기기 모델·운영체제·언어, IP 주소에서 추정한 대략적인 지역 등이 포함될 수 있으며 Google 서버로 전송됩니다.
+- 앱은 이름, 이메일, 계정 ID를 Analytics에 설정하지 않습니다. 설치 식별자가 있으므로 통계를 완전히 익명인 데이터로 간주하지 않습니다.
+- 방문 URL, 검색어, 페이지 제목, 방문 기록, 탭 그룹 이름·코드, 쿠키 및 백업 파일의 내용을 Analytics 이벤트로 보내지 않습니다.
+- 비공개 탭 그룹에서 탭을 새로 만드는 동작은 별도 통계 이벤트에서 제외됩니다. 앱 실행·세션 등의 자동 통계는 비공개 그룹을 이용하는 동안에도 수집될 수 있습니다.
+- Analytics의 광고 식별자 수집, iOS IDFV 수집 및 광고 개인화 신호는 비활성화합니다. 이는 AdMob 광고 SDK의 별도 정보 처리까지 비활성화한다는 의미는 아닙니다.
+- Android 및 iOS 앱의 Firebase 이용 통계를 해당 앱의 AdMob 보고서에 연결하여 이용자·광고 성과를 함께 확인합니다.
+
+통계는 앱 시작 후 자동으로 수집되며 현재 앱 내에 통계 수집을 끄는 별도 설정은 없습니다. 전송 중에는 암호화되며, Google이 보관하는 통계 및 광고 데이터에는 각 서비스의 보관·삭제 정책이 적용됩니다. 앱 삭제나 로컬 데이터 삭제만으로 이미 전송된 통계가 즉시 삭제되지는 않습니다.
+
+- [Google 개인정보처리방침](https://policies.google.com/privacy)
+- [Firebase 개인정보 보호 및 보안](https://firebase.google.com/support/privacy)
+- [Google Analytics 데이터 수집](https://support.google.com/analytics/answer/11593727)
 
 ---
 
@@ -110,6 +119,7 @@ app_url: /apps/tabgroup-browswer/
 - 이용자가 직접 웹사이트에 접속하는 경우
 - 이용자가 외부 앱 링크를 실행하는 경우
 - 광고 SDK가 광고 표시를 위해 자체적으로 필요한 정보를 처리하는 경우
+- Firebase Analytics가 앱 이용 통계를 수집하고 연결된 AdMob 보고서에서 사용하는 경우
 - 이용자가 백업 파일을 외부 서비스 또는 외부 저장 위치로 직접 이동·공유하는 경우
 
 이 경우 해당 정보 처리는 이용자가 선택한 웹사이트, 앱, 저장 서비스의 정책에 따릅니다.
@@ -133,6 +143,8 @@ app_url: /apps/tabgroup-browswer/
 백업 파일이 앱 외부 저장소에 저장된 경우에는, 해당 파일을 저장한 위치에서 이용자가 직접 삭제해야 할 수 있습니다.
 
 비공개 탭 그룹은 탭 그룹 목록에서 숨겨질 수 있으나, 해당 탭 그룹 자체가 자동으로 삭제되는 것은 아닙니다.
+
+광고 개인화 및 광고 식별자는 기기의 개인정보 보호·광고 설정에서 관리할 수 있습니다. 광고 설정 변경은 Analytics 이용 통계 수집을 끄는 기능과는 다릅니다. 통계 데이터에 관한 문의나 삭제 요청은 아래 이메일로 연락해 주세요. 앱은 이용자의 이름·이메일과 설치 식별자를 연결해 보관하지 않으므로, 개별 설치의 데이터를 식별하기 위해 추가 정보가 필요할 수 있습니다.
 
 ---
 
@@ -161,7 +173,7 @@ Solid TabGroup Browser (the "App") is not primarily a server-side account or mem
 
 This policy explains what information the App may store locally on the device, why it is used, and what users should understand when opening third-party websites or external app links.
 
-The App may also include **advertising features**, and this policy explains the related data handling at a practical level.
+The App uses **Google AdMob advertising and Google Analytics for Firebase usage statistics**, as described below.
 
 ---
 
@@ -199,7 +211,8 @@ The App uses locally stored information for the following purposes:
 - hiding private tab groups and allowing re-entry by code
 - handling and controlling external app links
 - managing browser data such as cookies, web storage, and cache
-- loading and showing app open ads
+- loading and showing banner ads
+- analyzing usage statistics to improve the App
 
 ---
 
@@ -238,16 +251,26 @@ Accordingly, this Privacy Policy applies to **the App’s own data handling prac
 
 ---
 
-### 6. Advertising and Third-Party SDKs
+### 6. Advertising, Analytics and Third-Party SDKs
 
-The App may show **App Open Ads** at certain moments, such as app launch, foreground return, or tab-group switching.
+The App uses **Google AdMob** for banner ads and **Google Analytics for Firebase** for usage statistics. This policy includes analytics introduced in Android and iOS version 1.0.12. Last updated: November 24, 2026.
 
-- The App may use third-party advertising SDKs such as Google AdMob to provide these ads.
-- During ad loading and display, the advertising SDK may process information such as device information, advertising identifiers, IP address, or app usage timing according to its own policies.
-- We have not identified app behavior that sends users’ tab-group codes, open-tab lists, visited URLs, or private-tab-group status to a developer-operated server for ad personalization.
-- Advertising-related information processing may therefore also be subject to the policies of the SDK or ad provider.
+AdMob may collect and share IP addresses and approximate location derived from them, device and advertising identifiers, app and ad interactions, crash information and performance data for advertising, analytics, diagnostics and fraud prevention. Availability of advertising identifiers depends on operating-system permissions and user settings.
 
-Please also review the privacy policy or related policy of the relevant advertising provider for details about how the ad SDK handles data.
+Firebase Analytics measures automatic events such as app launches, sessions and engagement time, plus counts of new tabs and tab groups, to understand usage and improve the App.
+
+- Statistics may include an app-instance identifier, app version, device model, operating system, language and approximate region derived from IP addresses. These data are transmitted to Google servers.
+- The App does not set a name, email address or account user ID in Analytics. An installation identifier is still present, so these statistics should not be treated as fully anonymous.
+- Analytics events do not contain visited URLs, search terms, page titles, browsing history, tab-group names or codes, cookies or backup contents.
+- Custom new-tab events are excluded for private tab groups. Automatic app-launch and session statistics may still be collected while a private group is in use.
+- Analytics advertising-ID collection, iOS IDFV collection and advertising-personalization signals are disabled. These settings do not disable separate processing by the AdMob advertising SDK.
+- Firebase usage statistics for the Android and iOS apps are linked to the respective apps' AdMob reports to view usage and advertising performance together.
+
+Analytics collection starts automatically after app startup. There is currently no separate in-app analytics opt-out setting. Data are encrypted in transit. Google's retention and deletion practices apply to analytics and advertising data stored by those services. Uninstalling the App or deleting local app data does not immediately delete data already transmitted.
+
+- [Google Privacy Policy](https://policies.google.com/privacy)
+- [Privacy and Security in Firebase](https://firebase.google.com/support/privacy)
+- [Google Analytics data collection](https://support.google.com/analytics/answer/11593727)
 
 ---
 
@@ -260,6 +283,7 @@ However, information may reach external services in the following cases:
 - when the user directly opens a website
 - when the user launches an external app link
 - when an advertising SDK processes the information it needs to load or display ads
+- when Firebase Analytics collects app-usage statistics and uses them in the linked AdMob reports
 - when the user manually moves or shares backup files to external services or storage locations
 
 In those cases, the relevant information is handled according to the policies of the website, app, or storage service chosen by the user.
@@ -283,6 +307,8 @@ Examples of available controls may include:
 If backup files are stored outside the App’s own local storage area, the user may need to delete those files manually from the location where they were saved.
 
 Private tab groups may be hidden from the chooser list, but they are not automatically deleted just because they are hidden.
+
+You can manage ad personalization and advertising identifiers in your device's privacy and advertising settings. Changing ad settings does not turn off Analytics usage collection. For questions or requests concerning analytics data, including deletion, contact the email below. The App does not maintain a mapping between a person's name or email and an installation identifier, so additional information may be needed to identify an individual installation's data.
 
 ---
 
