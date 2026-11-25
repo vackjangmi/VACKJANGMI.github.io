@@ -1,6 +1,6 @@
 ## 개인정보처리방침
 
-시행일: 2026년 11월 25일
+시행일: 2026년 11월 26일
 
 **Sooyeol Jeong(정수열)**은 이 앱의 기능 제공과 개선을 위해 아래 정보를 처리합니다. 별도의 개발자 운영 서버나 회원가입은 없지만, 광고 및 이용 통계 SDK를 통해 Google에 정보가 전송됩니다.
 
@@ -22,7 +22,7 @@ Firebase 이용 통계는 아래 버전부터 적용됩니다. 이전 버전에�
 
 ### 2. 이용 통계: Google Analytics for Firebase
 
-앱 실행·세션·이용 시간 등의 자동 이벤트와 고정된 기능 이름의 이벤트를 수집합니다. 게임 앱에서는 게임 시작·완료, 힌트, 설정, 통계 또는 리플레이 기능을, 스캔노트에서는 문서 생성·열기, 이미지 가져오기, 스캔 처리 및 PDF 저장 기능을 측정합니다. 지원되는 기능에 따라 이벤트가 다릅니다.
+앱 실행·세션·이용 시간 등의 자동 이벤트와 고정된 기능 이름의 이벤트를 수집합니다. 게임 앱에서는 게임 시작·완료·중도 종료, 일시정지·재개, 사진 준비, 힌트·메모 모드, 설정·통계, 리플레이 재생 및 영상 공유 준비·실패를, 스캔노트에서는 문서 생성·열기·이름 변경·삭제, 이미지 가져오기, 카메라 스캔·이미지 보정, 페이지 회전·분할 및 PDF 내보내기의 요청·완료·취소·실패를 측정합니다. 지원되는 기능에 따라 이벤트가 다릅니다.
 
 통계에는 앱 인스턴스 식별자, 앱 버전, 운영체제·기기 모델·언어 등의 정보와 마스킹된 IP 주소에서 유추한 대략적인 지역 정보가 포함될 수 있습니다. 날짜·시간별 사용자 수와 기능 이용량을 확인하여 앱을 개선하는 데 사용합니다. 이름·이메일·계정 ID를 통계에 설정하지 않으며, 정밀 위치 권한을 사용하지 않습니다.
 
@@ -62,7 +62,7 @@ Photos, scanned images, documents, document titles and notes, file names and pat
 
 ### 2. Google Analytics for Firebase
 
-We collect automatic app lifecycle and session events and events with fixed feature names. Games measure features such as starting or completing a game, hints, settings, statistics, and replays. Scanote measures document creation and opening, image import, scan processing, and PDF saving. Events vary with the features available in each app.
+We collect automatic app lifecycle and session events and events with fixed feature names. Games measure features such as starting, completing or leaving a game, manual pause and resume, photo preparation, hints and memo mode, settings and statistics, replay playback, and preparing or failing to share a replay video. Scanote measures document creation, opening, renaming and deletion, image import, camera scanning and image correction, page rotation and splitting, and requests, completion, cancellation or failure of PDF export. Events vary with the features available in each app.
 
 Analytics may include an app-instance identifier, app version, OS, device model, language, and approximate region derived from a masked IP address. We use reports of users and feature usage over time to improve the app. We do not set names, email addresses, or account IDs in Analytics or use precise-location permission for analytics.
 

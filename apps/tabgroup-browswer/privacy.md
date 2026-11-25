@@ -11,7 +11,7 @@ app_url: /apps/tabgroup-browswer/
 
 본 문서는 앱이 어떤 정보를 기기 내부에 저장할 수 있는지, 그 목적이 무엇인지, 그리고 외부 웹사이트 및 외부 앱 링크 처리 시 어떤 점을 알아두셔야 하는지를 설명합니다.
 
-앱은 **Google AdMob 광고와 Google Analytics for Firebase 이용 통계**를 사용합니다. 아래 내용은 Android 및 iOS 앱 1.0.12부터 추가되는 이용 통계를 포함합니다. 최종 수정일: 2026년 11월 24일.
+앱은 **Google AdMob 광고와 Google Analytics for Firebase 이용 통계**를 사용합니다. 아래 내용은 Android 및 iOS 앱 1.0.12부터 추가되는 이용 통계와 1.0.13부터 확장되는 기능 이벤트를 포함합니다. 최종 수정일: 2026년 11월 26일.
 
 ---
 
@@ -93,12 +93,12 @@ app_url: /apps/tabgroup-browswer/
 
 **Google AdMob**은 배너 광고를 제공합니다. 광고 SDK는 광고 제공, 광고 성과 분석, 오류 진단 및 부정 사용 방지를 위해 IP 주소 및 그로부터 추정한 대략적인 위치, 기기·광고 식별자, 앱 및 광고와의 상호작용, 오류·성능 정보를 수집·공유할 수 있습니다. 광고 식별자의 이용 가능 여부는 운영체제의 권한과 이용자 설정에 따릅니다.
 
-**Google Analytics for Firebase**는 앱 실행, 세션 및 이용 시간과 같은 자동 이용 통계와, 탭·탭 그룹을 새로 만드는 동작의 횟수를 수집하여 앱 이용 현황을 분석하고 기능을 개선하는 데 사용됩니다.
+**Google Analytics for Firebase**는 앱 실행, 세션 및 이용 시간과 같은 자동 이용 통계와, 탭·탭 그룹 생성, 탭 닫기·되돌리기·전환, 탭 그룹 전환·삭제, 설정 열기, 전체 백업 저장·복원 및 실패의 횟수를 수집하여 앱 이용 현황을 분석하고 기능을 개선하는 데 사용됩니다.
 
 - 통계에는 앱 설치 인스턴스 식별자, 앱 버전, 기기 모델·운영체제·언어, IP 주소에서 추정한 대략적인 지역 등이 포함될 수 있으며 Google 서버로 전송됩니다.
 - 앱은 이름, 이메일, 계정 ID를 Analytics에 설정하지 않습니다. 설치 식별자가 있으므로 통계를 완전히 익명인 데이터로 간주하지 않습니다.
 - 방문 URL, 검색어, 페이지 제목, 방문 기록, 탭 그룹 이름·코드, 쿠키 및 백업 파일의 내용을 Analytics 이벤트로 보내지 않습니다.
-- 비공개 탭 그룹에서 탭을 새로 만드는 동작은 별도 통계 이벤트에서 제외됩니다. 앱 실행·세션 등의 자동 통계는 비공개 그룹을 이용하는 동안에도 수집될 수 있습니다.
+- 비공개 탭 그룹의 탭 생성·닫기·되돌리기·전환 및 그룹 삭제는 별도 통계 이벤트에서 제외됩니다. 그룹 전환은 출발·도착 중 하나라도 비공개 그룹이면 기록하지 않으며, 자동 복원이나 같은 탭·그룹 재선택도 전환 이벤트에 포함하지 않습니다. 앱 실행·세션 등의 자동 통계는 비공개 그룹을 이용하는 동안에도 수집될 수 있습니다.
 - Analytics의 광고 식별자 수집, iOS IDFV 수집 및 광고 개인화 신호는 비활성화합니다. 이는 AdMob 광고 SDK의 별도 정보 처리까지 비활성화한다는 의미는 아닙니다.
 - Android 및 iOS 앱의 Firebase 이용 통계를 해당 앱의 AdMob 보고서에 연결하여 이용자·광고 성과를 함께 확인합니다.
 
@@ -253,16 +253,16 @@ Accordingly, this Privacy Policy applies to **the App’s own data handling prac
 
 ### 6. Advertising, Analytics and Third-Party SDKs
 
-The App uses **Google AdMob** for banner ads and **Google Analytics for Firebase** for usage statistics. This policy includes analytics introduced in Android and iOS version 1.0.12. Last updated: November 24, 2026.
+The App uses **Google AdMob** for banner ads and **Google Analytics for Firebase** for usage statistics. This policy includes analytics introduced in Android and iOS version 1.0.12 and expanded feature events from version 1.0.13. Last updated: November 26, 2026.
 
 AdMob may collect and share IP addresses and approximate location derived from them, device and advertising identifiers, app and ad interactions, crash information and performance data for advertising, analytics, diagnostics and fraud prevention. Availability of advertising identifiers depends on operating-system permissions and user settings.
 
-Firebase Analytics measures automatic events such as app launches, sessions and engagement time, plus counts of new tabs and tab groups, to understand usage and improve the App.
+Firebase Analytics measures automatic events such as app launches, sessions and engagement time, plus counts of tab and group creation, tab closing, reopening and switching, group switching and deletion, opening settings, and completion or failure of full backup export and restore, to understand usage and improve the App.
 
 - Statistics may include an app-instance identifier, app version, device model, operating system, language and approximate region derived from IP addresses. These data are transmitted to Google servers.
 - The App does not set a name, email address or account user ID in Analytics. An installation identifier is still present, so these statistics should not be treated as fully anonymous.
 - Analytics events do not contain visited URLs, search terms, page titles, browsing history, tab-group names or codes, cookies or backup contents.
-- Custom new-tab events are excluded for private tab groups. Automatic app-launch and session statistics may still be collected while a private group is in use.
+- Custom tab creation, closing, reopening and switching events and group-deletion events are excluded for private groups. Group-switch events are excluded if either the source or destination is private. Automatic restoration and reselecting the same tab or group do not count as switches. Automatic app-launch and session statistics may still be collected while a private group is in use.
 - Analytics advertising-ID collection, iOS IDFV collection and advertising-personalization signals are disabled. These settings do not disable separate processing by the AdMob advertising SDK.
 - Firebase usage statistics for the Android and iOS apps are linked to the respective apps' AdMob reports to view usage and advertising performance together.
 
